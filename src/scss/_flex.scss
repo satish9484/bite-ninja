@@ -425,31 +425,31 @@
 // IE10+ fallbacks
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .d-flex {
-    display: -ms-flexbox;
+    @include flexbox;
   }
 
   .d-inline-flex {
-    display: -ms-inline-flexbox;
+    @include inline-flex;
   }
 
   .flex-row {
-    -ms-flex-direction: row;
+    @include flex-direction(row);
   }
 
   .flex-column {
-    -ms-flex-direction: column;
+    @include flex-direction(column);
   }
 
   .justify-center {
-    -ms-flex-pack: center;
+    @include justify-content(center);
   }
 
   .justify-between {
-    -ms-flex-pack: justify;
+    @include justify-content(space-between);
   }
 
   .items-center {
-    -ms-flex-align: center;
+    @include align-items(center);
   }
 }
 
