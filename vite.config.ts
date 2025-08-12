@@ -24,9 +24,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "@components": path.resolve(__dirname, "./components"),
-      "@scss": path.resolve(__dirname, "./scss"),
-      "@styles": path.resolve(__dirname, "./scss"),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@scss": path.resolve(__dirname, "./src/scss"),
+      "@styles": path.resolve(__dirname, "./src/scss"),
     },
   },
   // Ensure SCSS files are watched and processed
@@ -40,7 +40,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom"],
-          styles: ["./scss/main.scss"],
+          styles: ["./src/scss/main.scss"],
         },
       },
     },
