@@ -1,0 +1,354 @@
+// =============================================================================
+// HERO SECTION STYLES - EXACT HTML STRUCTURE MATCH
+// =============================================================================
+
+// Import global SCSS variables and mixins
+@use "../../scss/variable" as *;
+@use "../../scss/mixin" as *;
+
+// =============================================================================
+// SECTION 1 - MAIN CONTAINER
+// =============================================================================
+
+.section1 {
+  // Background with specified color and opacity
+  background: rgba(223, 96, 37, 0.1);
+
+  // Full viewport height with specified height
+  min-height: 1100px;
+  height: 100vh;
+  max-height: 1100px;
+
+  // Layout and positioning
+  position: relative;
+  overflow: hidden;
+
+  // Responsive adjustments
+  @include respond-to("md") {
+    min-height: 900px;
+    max-height: 900px;
+  }
+
+  @include respond-to("sm") {
+    min-height: 800px;
+    max-height: 800px;
+  }
+}
+
+// =============================================================================
+// CONTAINER SYSTEM
+// =============================================================================
+
+.container {
+  // Simple declarations first
+  width: 100%;
+  height: 100%;
+  padding-top: $spacing-8;
+  padding-bottom: $spacing-8;
+
+  // Mixins with nested rules should be at the end
+  @include container();
+  @include respond-to("md") {
+    padding-top: $spacing-6;
+    padding-bottom: $spacing-6;
+  }
+}
+
+// =============================================================================
+// ROOT SECTION 1 - MAIN CONTENT WRAPPER
+// =============================================================================
+
+.rootSection1 {
+  // Full height and width
+  width: 100%;
+  height: 100%;
+
+  // Position relative for absolute positioning of background image
+  position: relative;
+
+  // Z-index to ensure content is above background
+  z-index: 2;
+
+  // Flexbox layout for centering content
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+// =============================================================================
+// FLEXBOX UTILITY CLASSES
+// =============================================================================
+
+.dFlexColumn {
+  @include flexbox;
+  @include flex-direction(column);
+}
+
+.justifyCenter {
+  @include justify-content(center);
+}
+
+.alignCenter {
+  @include align-items(center);
+}
+
+.gap80 {
+  gap: 80px;
+
+  @include respond-to("md") {
+    gap: 60px;
+  }
+
+  @include respond-to("sm") {
+    gap: 40px;
+  }
+}
+
+// =============================================================================
+// H1 TITLE STYLING
+// =============================================================================
+
+.section1 h1 {
+  // Typography using specified properties
+  font-weight: 700;
+  font-size: 80px;
+  text-align: center;
+  color: #ffffff; // Changed to white for better contrast
+
+  // Margin and spacing
+  margin: 0;
+
+  // Z-index to ensure text is above background image
+  position: relative;
+  z-index: 3;
+
+  // Text shadow for better readability on image
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+
+  // Enhanced glow effect for attractiveness
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+
+  // Responsive typography scaling
+  @include respond-to("xl") {
+    font-size: 72px;
+  }
+
+  @include respond-to("lg") {
+    font-size: 64px;
+    line-height: 115%;
+  }
+
+  @include respond-to("md") {
+    font-size: 56px;
+    line-height: 120%;
+  }
+
+  @include respond-to("sm") {
+    font-size: 48px;
+    line-height: 125%;
+  }
+
+  @include respond-to("xs") {
+    font-size: 40px;
+    line-height: 130%;
+  }
+}
+
+// =============================================================================
+// HERO SUBTITLE
+// =============================================================================
+
+.heroSubtitle {
+  // Typography
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold; // Made semibold for better visibility
+  line-height: $line-height-relaxed;
+  color: #f0f8ff; // Light blue-white for attractive contrast
+
+  // Spacing
+  margin: 0;
+  max-width: 600px;
+  text-align: center;
+
+  // Z-index to ensure text is above background image
+  position: relative;
+  z-index: 3;
+
+  // Text shadow for better readability
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.6);
+
+  // Enhanced glow effect
+  filter: drop-shadow(0 0 8px rgba(240, 248, 255, 0.4));
+
+  // Responsive adjustments
+  @include respond-to("md") {
+    font-size: $font-size-lg;
+  }
+
+  @include respond-to("sm") {
+    font-size: $font-size-base;
+  }
+}
+
+// =============================================================================
+// ENHANCED TEXT ATTRACTIVENESS
+// =============================================================================
+
+// Optional: Add a subtle background highlight for even better contrast
+.section1 h1::before,
+.heroSubtitle::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  right: -20px;
+  bottom: -10px;
+  background: linear-gradient(
+    135deg,
+    rgba(223, 96, 37, 0.1) 0%,
+    rgba(223, 96, 37, 0.05) 100%
+  );
+  border-radius: 15px;
+  z-index: -1;
+  opacity: 0.7;
+
+  @include respond-to("sm") {
+    top: -5px;
+    left: -10px;
+    right: -10px;
+    bottom: -5px;
+  }
+}
+
+// Hover effects for interactive feel
+.section1 h1:hover,
+.heroSubtitle:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+
+  // Enhanced glow on hover
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+}
+
+// =============================================================================
+// SECTION 1 FIGURE - BACKGROUND IMAGE
+// =============================================================================
+
+.section1Figure {
+  // Background and border using specified properties
+  background-color: #df6025;
+  border: 60px solid #df6025;
+  border-radius: 10px;
+
+  // Layout and positioning - ABSOLUTE for background
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  // Z-index to place behind content
+  z-index: 1;
+
+  // Responsive border adjustments
+  @include respond-to("lg") {
+    border-width: 50px;
+  }
+
+  @include respond-to("md") {
+    border-width: 40px;
+    border-radius: 8px;
+  }
+
+  @include respond-to("sm") {
+    border-width: 30px;
+    border-radius: 6px;
+  }
+
+  @include respond-to("xs") {
+    border-width: 20px;
+    border-radius: 4px;
+  }
+}
+
+// =============================================================================
+// FIGURE IMAGE - BACKGROUND IMAGE
+// =============================================================================
+
+.section1Figure img {
+  // Image properties for background
+  width: 100%;
+  height: 100%;
+
+  // Display and positioning
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  // Border radius to match figure
+  border-radius: inherit;
+}
+
+// =============================================================================
+// RESPONSIVE UTILITIES
+// =============================================================================
+
+// Mobile-first responsive design
+@include respond-to("xs") {
+  .section1 {
+    min-height: 700px;
+    max-height: 700px;
+  }
+
+  .gap80 {
+    gap: 30px;
+  }
+
+  .section1 h1 {
+    br {
+      display: none;
+    }
+  }
+}
+
+// =============================================================================
+// ACCESSIBILITY ENHANCEMENTS
+// =============================================================================
+
+// Focus states for better accessibility
+.section1 h1:focus {
+  @include focus-visible {
+    outline: 2px solid $primary-500;
+    outline-offset: 4px;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .section1 {
+    background: rgba(223, 96, 37, 0.2);
+  }
+
+  .section1 h1 {
+    color: $neutral-900;
+  }
+}
+
+// =============================================================================
+// PRINT STYLES
+// =============================================================================
+
+@media print {
+  .section1Figure {
+    display: none;
+  }
+
+  .section1 {
+    background: none;
+    min-height: auto;
+    height: auto;
+  }
+}

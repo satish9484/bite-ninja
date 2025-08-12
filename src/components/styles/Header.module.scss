@@ -1,0 +1,360 @@
+// =============================================================================
+// HEADER COMPONENT STYLES - CLEAN & PROFESSIONAL DESIGN
+// =============================================================================
+
+// =============================================================================
+// HEADER CONTAINER
+// =============================================================================
+
+.header {
+  background-color: white;
+  border-bottom: 1px solid $neutral-200;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  width: 100%;
+}
+
+.container {
+  @include container();
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+  padding-top: $spacing-4;
+  padding-bottom: $spacing-4;
+  min-height: $header-height-md;
+  gap: $spacing-4;
+
+  @include respond-to("sm") {
+    padding-top: $spacing-5;
+    padding-bottom: $spacing-5;
+    min-height: $header-height-sm;
+    gap: $spacing-3;
+  }
+
+  @include respond-to("lg") {
+    padding-top: $spacing-6;
+    padding-bottom: $spacing-6;
+    min-height: $header-height-lg;
+    gap: $spacing-6;
+  }
+}
+
+// =============================================================================
+// LOGO SECTION
+// =============================================================================
+
+.logo {
+  @include flexbox;
+  @include align-items(center);
+  flex-shrink: 0;
+}
+
+.logoLink {
+  @include flexbox;
+  @include align-items(center);
+  text-decoration: none;
+  color: $primary-600;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xl;
+  gap: $spacing-3;
+
+  @include respond-to("md") {
+    font-size: $font-size-2xl;
+    gap: $spacing-4;
+  }
+
+  &:hover {
+    color: $primary-700;
+  }
+}
+
+.logoImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+
+  @include respond-to("md") {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.logoText {
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
+  color: $primary-600;
+  white-space: nowrap;
+}
+
+// =============================================================================
+// DESKTOP NAVIGATION
+// =============================================================================
+
+.nav {
+  display: none;
+
+  @include respond-to("md") {
+    display: block;
+  }
+}
+
+.navList {
+  @include flexbox;
+  @include align-items(center);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-8;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  @include flexbox;
+  @include align-items(center);
+  @include flex-direction(column);
+  text-decoration: none;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  padding: $spacing-2 $spacing-3;
+  border-radius: $border-radius-md;
+  transition: all $transition-base;
+  gap: $spacing-1;
+  min-width: 80px;
+  text-align: center;
+
+  @include respond-to("lg") {
+    font-size: $font-size-base;
+    padding: $spacing-3 $spacing-4;
+    gap: $spacing-2;
+    min-width: 100px;
+  }
+
+  &:hover {
+    color: $primary-600;
+    background-color: $primary-50;
+  }
+
+  &.active {
+    color: $primary-600;
+    background-color: $primary-50;
+  }
+}
+
+.navIcon {
+  font-size: $font-size-xl;
+  line-height: 1;
+
+  @include respond-to("lg") {
+    font-size: $font-size-2xl;
+  }
+}
+
+.navText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+
+  @include respond-to("lg") {
+    font-size: $font-size-sm;
+  }
+}
+
+// =============================================================================
+// MOBILE TOGGLE BUTTON
+// =============================================================================
+
+.mobileToggle {
+
+  background: none;
+  border: none;
+  padding: $spacing-3;
+  cursor: pointer;
+  border-radius: $border-radius-md;
+  transition: background-color $transition-base;
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+
+  @include respond-to("md") {
+    display: none;
+  }
+
+  &:hover {
+    background-color: $neutral-100;
+  }
+
+  &.active {
+    background-color: $primary-50;
+  }
+
+  &:focus {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: $color-text-primary;
+  margin: 3px 0;
+  border-radius: 1px;
+  transition: all $transition-base;
+}
+
+.mobileToggle.active .hamburgerLine {
+  &:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  &:nth-child(2) {
+    opacity: 0;
+  }
+
+  &:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+}
+
+// =============================================================================
+// MOBILE MENU
+// =============================================================================
+
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid $neutral-200;
+  box-shadow: $shadow-md;
+  z-index: $z-index-dropdown;
+
+  @include respond-to("md") {
+    display: none !important;
+  }
+
+  &.open {
+    display: block;
+  }
+}
+
+.mobileNav {
+  padding: $spacing-4;
+}
+
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.mobileNavItem {
+  margin: 0;
+}
+
+.mobileNavLink {
+  @include flexbox;
+  @include align-items(center);
+  text-decoration: none;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-base;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $border-radius-md;
+  transition: all $transition-base;
+  gap: $spacing-3;
+
+  &:hover {
+    color: $primary-600;
+    background-color: $primary-50;
+  }
+
+  &.active {
+    color: $primary-600;
+    background-color: $primary-50;
+  }
+}
+
+.mobileNavIcon {
+  font-size: $font-size-xl;
+  line-height: 1;
+  min-width: 24px;
+  text-align: center;
+}
+
+.mobileNavText {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
+
+// =============================================================================
+// RESPONSIVE ADJUSTMENTS
+// =============================================================================
+
+@include respond-to("sm") {
+  .container {
+    padding-left: $spacing-4;
+    padding-right: $spacing-4;
+  }
+}
+
+@include respond-to("md") {
+  .container {
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+  }
+}
+
+@include respond-to("lg") {
+  .container {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
+}
+
+// =============================================================================
+// ACCESSIBILITY & FOCUS STATES
+// =============================================================================
+
+.navLink:focus,
+.mobileNavLink:focus,
+.mobileToggle:focus {
+  @include focus-visible {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// PRINT STYLES
+// =============================================================================
+
+@include print {
+  .header {
+    position: static;
+    box-shadow: none;
+    border-bottom: 1px solid $neutral-300;
+  }
+
+  .mobileToggle,
+  .mobileMenu {
+    display: none !important;
+  }
+}

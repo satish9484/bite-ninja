@@ -1,0 +1,56 @@
+// =============================================================================
+// SCSS INDEX FILE - FORWARDS ALL PARTIALS FOR GLOBAL ACCESS
+// =============================================================================
+
+// Forward all SCSS partials to make them globally available
+// This approach ensures all variables, mixins, and styles are accessible
+// throughout the entire project without import conflicts
+
+// 1. Variables first (needed by all other files)
+@forward "./variable";
+
+// 2. Mixins and utilities (depend on variables)
+@forward "./mixin";
+@forward "./utilities";
+
+// 3. Base styles and layout (depend on variables and mixins)
+@forward "./reset";
+@forward "./base";
+@forward "./layout";
+@forward "./col";
+@forward "./flex";
+
+// 4. Components and navigation (depend on base styles)
+@forward "./components";
+@forward "./navigation";
+
+// 5. Common styles and legacy support
+@forward "./common";
+@forward "./common2";
+
+// =============================================================================
+// IMPORT ORDER EXPLANATION
+// =============================================================================
+
+// 1. variable.scss - Contains all design system variables (colors, spacing, typography)
+// 2. mixin.scss - Contains all utility mixins (responsive, flexbox, vendor prefixes)
+// 3. utilities.scss - Tailwind-style utility classes
+// 4. reset.scss - CSS reset and base normalization
+// 5. base.scss - Base typography and element styles
+// 6. layout.scss - Layout utilities and grid systems
+// 7. col.scss - Column and grid system classes
+// 8. flex.scss - Flexbox utility classes
+// 9. components.scss - Reusable component styles
+// 10. navigation.scss - Navigation and menu styles
+// 11. common.scss - Common styles and legacy support
+// 12. common2.scss - Additional common styles
+
+// =============================================================================
+// GLOBAL AVAILABILITY
+// =============================================================================
+
+// All variables, mixins, and styles from the above files are now:
+// - Available globally throughout your project
+// - Accessible in any component's .module.scss file
+// - Properly cascaded without conflicts
+// - Ready for use in your React components

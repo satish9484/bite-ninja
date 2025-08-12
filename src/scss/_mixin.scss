@@ -1,0 +1,450 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:color";
+@use "./variable" as *;
+
+// =============================================================================
+// VENDOR PREFIX MIXINS
+// =============================================================================
+
+// Vendor prefix mixin for cross-browser compatibility
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+// Flexbox with vendor prefixes
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+}
+
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+
+@mixin align-self($align) {
+  -webkit-align-self: $align;
+  -moz-align-self: $align;
+  -ms-align-self: $align;
+  align-self: $align;
+}
+
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+  -moz-flex-grow: $grow;
+  -ms-flex-grow: $grow;
+  flex-grow: $grow;
+}
+
+@mixin flex-shrink($shrink) {
+  -webkit-flex-shrink: $shrink;
+  -moz-flex-shrink: $shrink;
+  -ms-flex-shrink: $shrink;
+  flex-shrink: $shrink;
+}
+
+@mixin flex-basis($basis) {
+  -webkit-flex-basis: $basis;
+  -moz-flex-basis: $basis;
+  -ms-flex-basis: $basis;
+  flex-basis: $basis;
+}
+
+@mixin flex($grow, $shrink: 1, $basis: auto) {
+  -webkit-flex: $grow $shrink $basis;
+  -moz-flex: $grow $shrink $basis;
+  -ms-flex: $grow $shrink $basis;
+  flex: $grow $shrink $basis;
+}
+
+// Grid with vendor prefixes
+@mixin grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+@mixin grid-template-columns($columns) {
+  -ms-grid-columns: $columns;
+  grid-template-columns: $columns;
+}
+
+@mixin grid-template-rows($rows) {
+  -ms-grid-rows: $rows;
+  grid-template-rows: $rows;
+}
+
+@mixin grid-column($start, $end: null) {
+  -ms-grid-column: $start;
+  @if $end {
+    -ms-grid-column-span: $end - $start;
+    grid-column: #{$start} / #{$end};
+  } @else {
+    grid-column: $start;
+  }
+}
+
+@mixin grid-row($start, $end: null) {
+  -ms-grid-row: $start;
+  @if $end {
+    -ms-grid-row-span: $end - $start;
+    grid-row: #{$start} / #{$end};
+  } @else {
+    grid-row: $start;
+  }
+}
+
+// Transform with vendor prefixes
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin transform-origin($origin) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+@mixin transition($transitions...) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+
+@mixin transition-property($properties...) {
+  -webkit-transition-property: $properties;
+  -moz-transition-property: $properties;
+  -o-transition-property: $properties;
+  transition-property: $properties;
+}
+
+@mixin transition-duration($durations...) {
+  -webkit-transition-duration: $durations;
+  -moz-transition-duration: $durations;
+  -o-transition-duration: $durations;
+  transition-duration: $durations;
+}
+
+@mixin transition-timing-function($functions...) {
+  -webkit-transition-timing-function: $functions;
+  -moz-transition-timing-function: $functions;
+  -o-transition-timing-function: $functions;
+  transition-timing-function: $functions;
+}
+
+@mixin transition-delay($delays...) {
+  -webkit-transition-delay: $delays;
+  -moz-transition-delay: $delays;
+  -o-transition-delay: $delays;
+  transition-delay: $delays;
+}
+
+// Animation with vendor prefixes
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($animations...) {
+  -webkit-animation: $animations;
+  -moz-animation: $animations;
+  -o-animation: $animations;
+  animation: $animations;
+}
+
+// Border radius with vendor prefixes
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin border-top-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-radius-topright: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  -moz-border-radius-bottomright: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-bottom-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+// Box shadow with vendor prefixes
+@mixin box-shadow($shadows...) {
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+// Filter with vendor prefixes
+@mixin filter($filters...) {
+  -webkit-filter: $filters;
+  filter: $filters;
+}
+
+// Backdrop filter with vendor prefixes
+@mixin backdrop-filter($filters...) {
+  -webkit-backdrop-filter: $filters;
+  backdrop-filter: $filters;
+}
+
+// =============================================================================
+// Responsive Design Mixins
+// =============================================================================
+
+// Media query mixin
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @if $value == 0 {
+      @content;
+    } @else {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+// Responsive mixin (alias for respond-to)
+@mixin responsive($breakpoint) {
+  @include respond-to($breakpoint) {
+    @content;
+  }
+}
+
+// Max-width media query
+@mixin respond-to-max($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @if $value > 0 {
+      @media (max-width: #{$value - 1}px) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+// Container mixin
+@mixin container($max-width: null) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+
+  @if $max-width {
+    max-width: $max-width;
+  } @else {
+    @each $breakpoint, $container-max-width in $container-max-widths {
+      @include respond-to($breakpoint) {
+        max-width: $container-max-width;
+      }
+    }
+  }
+}
+
+// Responsive font size mixin
+@mixin responsive-font-size($element) {
+  @if map.has-key($responsive-font-sizes, $element) {
+    $sizes: map.get($responsive-font-sizes, $element);
+
+    @each $breakpoint, $size in $sizes {
+      @if $breakpoint == xs {
+        font-size: $size;
+      } @else {
+        @include respond-to($breakpoint) {
+          font-size: $size;
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Layout Mixins
+// =============================================================================
+
+// Aspect ratio mixin
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Truncate text mixin
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// Hide text mixin
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+// Clearfix mixin
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// =============================================================================
+// Utility Mixins
+// =============================================================================
+
+// Visually hidden (accessible)
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Focus visible mixin
+@mixin focus-visible {
+  &:focus-visible {
+    @content;
+  }
+}
+
+// Hover mixin with media query support
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Reduced motion mixin
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// High contrast mode mixin
+@mixin high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// Dark mode mixin
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// Print styles mixin
+@mixin print {
+  @media print {
+    @content;
+  }
+}

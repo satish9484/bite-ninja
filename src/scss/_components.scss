@@ -1,0 +1,294 @@
+@use "./variable" as *;
+@use "./mixin" as *;
+
+// =============================================================================
+// COMPONENT STYLES - BUTTONS, CARDS, FORMS, TABLES, MODALS
+// =============================================================================
+
+// =============================================================================
+// BUTTON SYSTEM
+// =============================================================================
+
+.btn {
+  @include inline-flex;
+  @include align-items(center);
+  @include justify-content(center);
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+
+  @include respond-to("md") {
+    padding: $spacing-3 $spacing-6;
+    font-size: $font-size-base;
+  }
+
+  &:hover {
+    @include hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus {
+    @include focus-visible {
+      outline: 2px solid $primary-500;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: $primary-600;
+  border-color: $primary-600;
+  color: white;
+
+  &:hover {
+    @include hover {
+      background-color: $primary-700;
+      border-color: $primary-700;
+    }
+  }
+}
+
+.btn-secondary {
+  background-color: $neutral-100;
+  border-color: $neutral-300;
+  color: $color-text-primary;
+
+  &:hover {
+    @include hover {
+      background-color: $neutral-200;
+      border-color: $neutral-400;
+    }
+  }
+}
+
+// =============================================================================
+// CARD SYSTEM
+// =============================================================================
+
+.card {
+  background-color: white;
+  border: 1px solid $neutral-200;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &:hover {
+    @include hover {
+      box-shadow: $shadow-md;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.card-header {
+  padding: $spacing-4;
+  border-bottom: 1px solid $neutral-200;
+  background-color: $neutral-50;
+
+  @include respond-to("md") {
+    padding: $spacing-6;
+  }
+}
+
+.card-body {
+  padding: $spacing-4;
+
+  @include respond-to("md") {
+    padding: $spacing-6;
+  }
+}
+
+.card-footer {
+  padding: $spacing-4;
+  border-top: 1px solid $neutral-200;
+  background-color: $neutral-50;
+
+  @include respond-to("md") {
+    padding: $spacing-6;
+  }
+}
+
+// =============================================================================
+// FORM SYSTEM
+// =============================================================================
+
+.form-group {
+  margin-bottom: $spacing-4;
+
+  @include respond-to("md") {
+    margin-bottom: $spacing-6;
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: $spacing-2;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+
+  @include respond-to("md") {
+    margin-bottom: $spacing-3;
+    font-size: $font-size-base;
+  }
+}
+
+.form-input {
+  width: 100%;
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-base;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+  background-color: white;
+  border: 1px solid $neutral-300;
+  border-radius: $border-radius-md;
+  transition: all $transition-base;
+
+  @include respond-to("md") {
+    padding: $spacing-3 $spacing-4;
+    font-size: $font-size-lg;
+  }
+
+  &:focus {
+    @include focus-visible {
+      outline: none;
+      border-color: $primary-500;
+      box-shadow: 0 0 0 3px rgba($primary-500, 0.1);
+    }
+  }
+
+  &:hover {
+    @include hover {
+      border-color: $neutral-400;
+    }
+  }
+}
+
+// =============================================================================
+// TABLE SYSTEM
+// =============================================================================
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include respond-to("lg") {
+    overflow-x: visible;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+
+  @include respond-to("md") {
+    font-size: $font-size-base;
+  }
+}
+
+.table th,
+.table td {
+  padding: $spacing-2 $spacing-3;
+  text-align: left;
+  border-bottom: 1px solid $neutral-200;
+
+  @include respond-to("md") {
+    padding: $spacing-3 $spacing-4;
+  }
+}
+
+.table th {
+  background-color: $neutral-50;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+// =============================================================================
+// MODAL SYSTEM
+// =============================================================================
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($neutral-900, 0.5);
+  display: none;
+  z-index: 1050;
+
+  &.show {
+    display: flex;
+    @include align-items(center);
+    @include justify-content(center);
+  }
+}
+
+.modal-dialog {
+  background-color: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-2xl;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+
+  @include respond-to("sm") {
+    max-width: 500px;
+  }
+
+  @include respond-to("md") {
+    max-width: 600px;
+  }
+
+  @include respond-to("lg") {
+    max-width: 800px;
+  }
+}
+
+.modal-header {
+  padding: $spacing-4;
+  border-bottom: 1px solid $neutral-200;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+
+  @include respond-to("md") {
+    padding: $spacing-6;
+  }
+}
+
+.modal-body {
+  padding: $spacing-4;
+
+  @include respond-to("md") {
+    padding: $spacing-6;
+  }
+}
+
+.modal-footer {
+  padding: $spacing-4;
+  border-top: 1px solid $neutral-200;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(flex-end);
+  gap: $spacing-3;
+
+  @include respond-to("md") {
+    padding: $spacing-6;
+    gap: $spacing-4;
+  }
+}

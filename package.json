@@ -1,0 +1,36 @@
+{
+  "name": "bite-ninja-react",
+  "version": "1.0.0",
+  "description": "Bite Ninja - React application",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5055 --open",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "scss:watch": "sass --watch scss/main.scss:dist/styles.css --style expanded --source-map",
+    "scss:build": "sass scss/main.scss:dist/styles.css --style compressed --no-source-map",
+    "scss:dev": "sass scss/main.scss:dist/styles.css --style expanded --source-map",
+    "styles:clean": "rm -rf dist/styles.css dist/styles.css.map",
+    "styles:build": "npm run styles:clean && npm run scss:build",
+    "styles:dev": "npm run styles:clean && npm run scss:dev"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "sass": "^1.69.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
+  }
+}

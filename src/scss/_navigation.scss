@@ -1,0 +1,112 @@
+@use "./variable" as *;
+@use "./mixin" as *;
+// =============================================================================
+// NAVIGATION SYSTEM - NAVBAR, NAVIGATION
+// =============================================================================
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid $neutral-200;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  // Simple declarations first
+  padding-top: $spacing-3;
+  padding-bottom: $spacing-3;
+
+  // Mixins that generate simple declarations next
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(space-between);
+
+  // Mixins with nested rules should be at the end
+  @include container;
+
+  // Manual nested rules
+  @include respond-to("md") {
+    padding-top: $spacing-4;
+    padding-bottom: $spacing-4;
+  }
+}
+
+.navbar-brand {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $primary-600;
+  text-decoration: none;
+
+  @include respond-to("md") {
+    font-size: $font-size-2xl;
+  }
+}
+
+.navbar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: $spacing-6;
+  @include flexbox;
+  @include align-items(center);
+
+  @include respond-to("md") {
+    gap: $spacing-8;
+  }
+}
+
+.nav-link {
+  color: $color-text-secondary;
+  text-decoration: none;
+  font-weight: $font-weight-medium;
+  transition: color $transition-base;
+
+  &:hover {
+    @include hover {
+      color: $primary-600;
+    }
+  }
+
+  &.active {
+    color: $primary-600;
+  }
+}
+
+// Mobile menu toggle
+.navbar-toggle {
+  display: block;
+  background: none;
+  border: none;
+  font-size: $font-size-xl;
+  color: $color-text-primary;
+  cursor: pointer;
+
+  @include respond-to("md") {
+    display: none;
+  }
+}
+
+// Mobile navigation
+.navbar-collapse {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid $neutral-200;
+  box-shadow: $shadow-md;
+
+  @include respond-to("md") {
+    display: block;
+    position: static;
+    border-top: none;
+    box-shadow: none;
+  }
+
+  &.show {
+    display: block;
+  }
+}

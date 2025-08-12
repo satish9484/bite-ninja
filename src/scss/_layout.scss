@@ -1,0 +1,132 @@
+// =============================================================================
+// LAYOUT SYSTEM - CONTAINERS, GRID, SPACING
+// =============================================================================
+
+@use "sass:math";
+@use "./variable" as *;
+@use "./mixin" as *;
+
+// Container system
+.container {
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+  @include container();
+
+  @include respond-to("sm") {
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+  }
+
+  @include respond-to("lg") {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
+}
+
+.container-fluid {
+  max-width: none;
+  @include container();
+}
+
+// Row and column system
+.row {
+  margin-left: -$spacing-2;
+  margin-right: -$spacing-2;
+  @include flexbox;
+  @include flex-wrap(wrap);
+
+  @include respond-to("md") {
+    margin-left: -$spacing-4;
+    margin-right: -$spacing-4;
+  }
+}
+
+// =============================================================================
+// RESPONSIVE GRID SYSTEM
+// =============================================================================
+
+// Generate responsive grid columns
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 math.percentage(math.div($i, 12));
+    max-width: math.percentage(math.div($i, 12));
+    padding-left: $spacing-2;
+    padding-right: $spacing-2;
+
+    @include respond-to("md") {
+      padding-left: $spacing-4;
+      padding-right: $spacing-4;
+    }
+  }
+}
+
+// Generate responsive grid classes for all breakpoints
+@each $breakpoint, $value in $breakpoints {
+  @include respond-to($breakpoint) {
+    @for $i from 1 through 12 {
+      .#{$breakpoint}\:col-#{$i} {
+        flex: 0 0 math.percentage(math.div($i, 12));
+        max-width: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+}
+
+// =============================================================================
+// RESPONSIVE SPACING SYSTEM
+// =============================================================================
+
+// Generate responsive spacing utilities
+@each $size, $value in $spacing {
+  @each $breakpoint, $bp-value in $breakpoints {
+    @include respond-to($breakpoint) {
+      .#{$breakpoint}\:m-#{$size} {
+        margin: $value !important;
+      }
+      .#{$breakpoint}\:mt-#{$size} {
+        margin-top: $value !important;
+      }
+      .#{$breakpoint}\:mr-#{$size} {
+        margin-right: $value !important;
+      }
+      .#{$breakpoint}\:mb-#{$size} {
+        margin-bottom: $value !important;
+      }
+      .#{$breakpoint}\:ml-#{$size} {
+        margin-left: $value !important;
+      }
+      .#{$breakpoint}\:mx-#{$size} {
+        margin-left: $value !important;
+        margin-right: $value !important;
+      }
+      .#{$breakpoint}\:my-#{$size} {
+        margin-top: $value !important;
+        margin-bottom: $value !important;
+      }
+
+      .#{$breakpoint}\:p-#{$size} {
+        padding: $value !important;
+      }
+      .#{$breakpoint}\:pt-#{$size} {
+        padding-top: $value !important;
+      }
+      .#{$breakpoint}\:pr-#{$size} {
+        padding-right: $value !important;
+      }
+      .#{$breakpoint}\:pb-#{$size} {
+        padding-bottom: $value !important;
+      }
+      .#{$breakpoint}\:pl-#{$size} {
+        padding-left: $value !important;
+      }
+      .#{$breakpoint}\:px-#{$size} {
+        padding-left: $value !important;
+        padding-right: $value !important;
+      }
+      .#{$breakpoint}\:py-#{$size} {
+        padding-top: $value !important;
+        padding-bottom: $value !important;
+      }
+    }
+  }
+}
