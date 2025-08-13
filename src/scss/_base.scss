@@ -3,6 +3,7 @@
 // =============================================================================
 @use "./variable" as *;
 @use "./mixin" as *;
+@use "./fonts/index" as *;
 
 // Base HTML and body styles
 html {
@@ -21,17 +22,21 @@ html {
 }
 
 body {
-  font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
   line-height: $line-height-normal;
-  color: $color-text-primary;
-  background-color: $color-background;
+  color: color(text-primary);
+  background-color: color(background);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  @include font-family-role(
+    "primary",
+    300,
+    normal
+  ); // Corrected syntax and arguments
 }
 
 // =============================================================================

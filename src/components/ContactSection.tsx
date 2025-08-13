@@ -68,17 +68,19 @@ export default function ContactSection() {
   };
 
   return (
-    <section className={styles.section} aria-labelledby="contact-title">
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <h2 id="contact-title" className={styles.title}>
+    <section className={styles.contactRoot} aria-labelledby="contact-title">
+      <div
+        className={`container d-flex flex-column md:flex-row items-center ${styles.contactContainer}`}
+      >
+        <div className={`${styles.contactLeft} d-flex flex-column`}>
+          <h2 id="contact-title" className={styles.contactTitle}>
             Get in touch
           </h2>
-          <p className={styles.subtitle}>
+          <p className={styles.contactSubtitle}>
             We’d love to hear from you. Send us a message and our team will get
             back within 1–2 business days.
           </p>
-          <figure className={styles.mapCard}>
+          <figure className={styles.contactMapCard}>
             <img
               src="/Images/section_7_map.png"
               alt="Map showing our service area"
@@ -86,12 +88,18 @@ export default function ContactSection() {
           </figure>
         </div>
 
-        <div className={styles.right}>
-          <form className={styles.formCard} noValidate onSubmit={onSubmit}>
-            <div className={styles.gridRow}>
-              <div className={styles.half}>
-                <label htmlFor="name" className={styles.label}>
-                  Name <span className={styles.required}>*</span>
+        <div className={`${styles.contactRight} w-100`}>
+          <form
+            className={styles.contactFormCard}
+            noValidate
+            onSubmit={onSubmit}
+          >
+            <div
+              className={`d-grid grid-cols-1 gap-6 ${styles.contactGridRow}`}
+            >
+              <div className={styles.contactHalf}>
+                <label htmlFor="name" className={styles.contactLabel}>
+                  Name <span className={styles.contactRequired}>*</span>
                 </label>
                 <input
                   id="name"
@@ -103,18 +111,22 @@ export default function ContactSection() {
                   onChange={onChange("name")}
                   aria-invalid={Boolean(errors.name) || undefined}
                   aria-describedby={errors.name ? "name-error" : undefined}
-                  className={styles.input}
+                  className={styles.contactInput}
                   required
                 />
                 {errors.name && (
-                  <p id="name-error" role="alert" className={styles.errorText}>
+                  <p
+                    id="name-error"
+                    role="alert"
+                    className={styles.contactErrorText}
+                  >
                     {errors.name}
                   </p>
                 )}
               </div>
-              <div className={styles.half}>
-                <label htmlFor="email" className={styles.label}>
-                  Email <span className={styles.required}>*</span>
+              <div className={styles.contactHalf}>
+                <label htmlFor="email" className={styles.contactLabel}>
+                  Email <span className={styles.contactRequired}>*</span>
                 </label>
                 <input
                   id="email"
@@ -126,20 +138,24 @@ export default function ContactSection() {
                   onChange={onChange("email")}
                   aria-invalid={Boolean(errors.email) || undefined}
                   aria-describedby={errors.email ? "email-error" : undefined}
-                  className={styles.input}
+                  className={styles.contactInput}
                   required
                 />
                 {errors.email && (
-                  <p id="email-error" role="alert" className={styles.errorText}>
+                  <p
+                    id="email-error"
+                    role="alert"
+                    className={styles.contactErrorText}
+                  >
                     {errors.email}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className={styles.block}>
-              <label htmlFor="message" className={styles.label}>
-                Message <span className={styles.required}>*</span>
+            <div className={styles.contactBlock}>
+              <label htmlFor="message" className={styles.contactLabel}>
+                Message <span className={styles.contactRequired}>*</span>
               </label>
               <textarea
                 id="message"
@@ -151,20 +167,26 @@ export default function ContactSection() {
                 onChange={onChange("message")}
                 aria-invalid={Boolean(errors.message) || undefined}
                 aria-describedby={errors.message ? "message-error" : undefined}
-                className={`${styles.input} ${styles.textarea}`}
+                className={`${styles.contactInput} ${styles.contactTextarea}`}
                 required
               />
               {errors.message && (
-                <p id="message-error" role="alert" className={styles.errorText}>
+                <p
+                  id="message-error"
+                  role="alert"
+                  className={styles.contactErrorText}
+                >
                   {errors.message}
                 </p>
               )}
             </div>
 
-            <div className={styles.actions}>
+            <div
+              className={`${styles.contactActions} d-flex items-center gap-4 md:flex-row flex-column`}
+            >
               <button
                 type="submit"
-                className={styles.submitButton}
+                className={`${styles.contactSubmitButton} btn btn-primary`}
                 aria-disabled={hasErrors || isSubmitting}
                 disabled={hasErrors || isSubmitting}
                 aria-busy={isSubmitting || undefined}
@@ -173,7 +195,7 @@ export default function ContactSection() {
               </button>
               {submitted && (
                 <span
-                  className={styles.successText}
+                  className={styles.contactSuccessText}
                   role="status"
                   aria-live="polite"
                 >

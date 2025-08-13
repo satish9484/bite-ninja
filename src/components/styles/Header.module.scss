@@ -6,9 +6,9 @@
 // HEADER CONTAINER
 // =============================================================================
 
-.header {
-  background-color: white;
-  border-bottom: 1px solid $neutral-200;
+.headerRoot {
+  background-color: color(background);
+  border-bottom: 1px solid color(border);
   box-shadow: $shadow-sm;
   position: sticky;
   top: 0;
@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-.container {
+.headerContainer {
   @include container();
   @include flexbox;
   @include align-items(center);
@@ -45,17 +45,17 @@
 // LOGO SECTION
 // =============================================================================
 
-.logo {
+.headerLogo {
   @include flexbox;
   @include align-items(center);
   flex-shrink: 0;
 }
 
-.logoLink {
+.headerLogoLink {
   @include flexbox;
   @include align-items(center);
   text-decoration: none;
-  color: $primary-600;
+  color: color(primary);
   font-weight: $font-weight-bold;
   font-size: $font-size-xl;
   gap: $spacing-3;
@@ -70,7 +70,7 @@
   }
 }
 
-.logoImage {
+.headerLogoImage {
   width: 40px;
   height: 40px;
   object-fit: contain;
@@ -81,10 +81,10 @@
   }
 }
 
-.logoText {
+.headerLogoText {
   font-family: $font-family-base;
   font-weight: $font-weight-bold;
-  color: $primary-600;
+  color: color(primary);
   white-space: nowrap;
 }
 
@@ -92,7 +92,7 @@
 // DESKTOP NAVIGATION
 // =============================================================================
 
-.nav {
+.headerNav {
   display: none;
 
   @include respond-to("md") {
@@ -100,7 +100,7 @@
   }
 }
 
-.navList {
+.headerNavList {
   @include flexbox;
   @include align-items(center);
   list-style: none;
@@ -109,16 +109,16 @@
   gap: $spacing-8;
 }
 
-.navItem {
+.headerNavItem {
   margin: 0;
 }
 
-.navLink {
+.headerNavLink {
   @include flexbox;
   @include align-items(center);
   @include flex-direction(column);
   text-decoration: none;
-  color: $color-text-secondary;
+  color: color(text-secondary);
   font-weight: $font-weight-medium;
   font-size: $font-size-sm;
   padding: $spacing-2 $spacing-3;
@@ -136,17 +136,17 @@
   }
 
   &:hover {
-    color: $primary-600;
+    color: color(primary);
     background-color: $primary-50;
   }
 
   &.active {
-    color: $primary-600;
+    color: color(primary);
     background-color: $primary-50;
   }
 }
 
-.navIcon {
+.headerNavIcon {
   font-size: $font-size-xl;
   line-height: 1;
 
@@ -155,7 +155,7 @@
   }
 }
 
-.navText {
+.headerNavText {
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   line-height: $line-height-tight;
@@ -169,8 +169,7 @@
 // MOBILE TOGGLE BUTTON
 // =============================================================================
 
-.mobileToggle {
-
+.headerMobileToggle {
   background: none;
   border: none;
   padding: $spacing-3;
@@ -203,17 +202,17 @@
   }
 }
 
-.hamburgerLine {
+.headerHamburgerLine {
   display: block;
   width: 20px;
   height: 2px;
-  background-color: $color-text-primary;
+  background-color: color(text-primary);
   margin: 3px 0;
   border-radius: 1px;
   transition: all $transition-base;
 }
 
-.mobileToggle.active .hamburgerLine {
+.headerMobileToggle.active .headerHamburgerLine {
   &:nth-child(1) {
     transform: rotate(45deg) translate(4px, 4px);
   }
@@ -231,14 +230,14 @@
 // MOBILE MENU
 // =============================================================================
 
-.mobileMenu {
+.headerMobileMenu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background-color: white;
-  border-top: 1px solid $neutral-200;
+  background-color: color(surface);
+  border-top: 1px solid color(border);
   box-shadow: $shadow-md;
   z-index: $z-index-dropdown;
 
@@ -251,11 +250,11 @@
   }
 }
 
-.mobileNav {
+.headerMobileNav {
   padding: $spacing-4;
 }
 
-.mobileNavList {
+.headerMobileNavList {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -264,15 +263,15 @@
   gap: $spacing-2;
 }
 
-.mobileNavItem {
+.headerMobileNavItem {
   margin: 0;
 }
 
-.mobileNavLink {
+.headerMobileNavLink {
   @include flexbox;
   @include align-items(center);
   text-decoration: none;
-  color: $color-text-secondary;
+  color: color(text-secondary);
   font-weight: $font-weight-medium;
   font-size: $font-size-base;
   padding: $spacing-3 $spacing-4;
@@ -281,24 +280,24 @@
   gap: $spacing-3;
 
   &:hover {
-    color: $primary-600;
+    color: color(primary);
     background-color: $primary-50;
   }
 
   &.active {
-    color: $primary-600;
+    color: color(primary);
     background-color: $primary-50;
   }
 }
 
-.mobileNavIcon {
+.headerMobileNavIcon {
   font-size: $font-size-xl;
   line-height: 1;
   min-width: 24px;
   text-align: center;
 }
 
-.mobileNavText {
+.headerMobileNavText {
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
   line-height: $line-height-normal;
@@ -309,21 +308,21 @@
 // =============================================================================
 
 @include respond-to("sm") {
-  .container {
+  .headerContainer {
     padding-left: $spacing-4;
     padding-right: $spacing-4;
   }
 }
 
 @include respond-to("md") {
-  .container {
+  .headerContainer {
     padding-left: $spacing-6;
     padding-right: $spacing-6;
   }
 }
 
 @include respond-to("lg") {
-  .container {
+  .headerContainer {
     padding-left: $spacing-8;
     padding-right: $spacing-8;
   }
@@ -333,9 +332,9 @@
 // ACCESSIBILITY & FOCUS STATES
 // =============================================================================
 
-.navLink:focus,
-.mobileNavLink:focus,
-.mobileToggle:focus {
+.headerNavLink:focus,
+.headerMobileNavLink:focus,
+.headerMobileToggle:focus {
   @include focus-visible {
     outline: 2px solid $primary-500;
     outline-offset: 2px;
@@ -347,14 +346,14 @@
 // =============================================================================
 
 @include print {
-  .header {
+  .headerRoot {
     position: static;
     box-shadow: none;
     border-bottom: 1px solid $neutral-300;
   }
 
-  .mobileToggle,
-  .mobileMenu {
+  .headerMobileToggle,
+  .headerMobileMenu {
     display: none !important;
   }
 }

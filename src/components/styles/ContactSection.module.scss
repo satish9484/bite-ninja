@@ -1,12 +1,12 @@
 @use "@scss/mixin" as *;
 @use "@scss/variable" as *;
 
-.section {
+.contactRoot {
   padding: $spacing-16 0 $spacing-24 0;
-  background: $color-background;
+  background: color(background);
 }
 
-.container {
+.contactContainer {
   gap: $spacing-16;
   @include container();
   @include flexbox;
@@ -19,30 +19,30 @@
   }
 }
 
-.left {
+.contactLeft {
   display: flex;
   flex-direction: column;
   gap: $spacing-6;
 }
 
-.title {
+.contactTitle {
   font-weight: $font-weight-bold;
-  color: $color-text-primary;
+  color: color(text-primary);
   @include responsive-font-size(h3);
 }
 
-.subtitle {
-  color: $color-text-secondary;
+.contactSubtitle {
+  color: color(text-secondary);
   line-height: $line-height-relaxed;
   font-size: $font-size-lg;
   max-width: 48ch;
 }
 
-.mapCard {
+.contactMapCard {
   border-radius: $border-radius-xl;
   overflow: hidden;
   box-shadow: $shadow-lg;
-  border: 1px solid $neutral-200;
+  border: 1px solid color(border);
   @include transition(transform $transition-base, box-shadow $transition-base);
 
   img {
@@ -57,19 +57,19 @@
   }
 }
 
-.right {
+.contactRight {
   width: 100%;
 }
 
-.formCard {
-  background: $white;
-  border: 1px solid $neutral-200;
+.contactFormCard {
+  background: color(surface);
+  border: 1px solid color(border);
   border-radius: $border-radius-2xl;
   padding: clamp($spacing-6, 3vw, $spacing-8);
   box-shadow: $shadow-lg;
 }
 
-.gridRow {
+.contactGridRow {
   display: grid;
   gap: $spacing-6;
   @include grid-template-columns(1fr);
@@ -79,27 +79,27 @@
   }
 }
 
-.half {
+.contactHalf {
   width: 100%;
 }
 
-.block {
+.contactBlock {
   margin-top: $spacing-6;
 }
 
-.label {
+.contactLabel {
   display: block;
   margin-bottom: $spacing-2;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: color(text-primary);
 }
 
-.input {
+.contactInput {
   width: 100%;
   padding: $spacing-4 $spacing-5;
-  background: $white;
-  color: $color-text-primary;
-  border: 1px solid $neutral-300;
+  background: color(surface);
+  color: color(text-primary);
+  border: 1px solid color(border);
   border-radius: $border-radius-lg;
   font-size: $font-size-base;
   line-height: $line-height-normal;
@@ -115,7 +115,7 @@
 
   &:focus {
     outline: none;
-    border-color: $primary-400;
+    border-color: color(primary);
     box-shadow: 0 0 0 3px rgba($primary-500, 0.15);
   }
 
@@ -125,12 +125,12 @@
   }
 }
 
-.textarea {
+.contactTextarea {
   min-height: 140px;
   resize: vertical;
 }
 
-.actions {
+.contactActions {
   display: flex;
   align-items: center;
   gap: $spacing-4;
@@ -142,7 +142,7 @@
   }
 }
 
-.submitButton {
+.contactSubmitButton {
   @include inline-flex;
   @include align-items(center);
   @include justify-content(center);
@@ -177,17 +177,17 @@
   }
 }
 
-.required {
+.contactRequired {
   color: $error-500;
 }
 
-.errorText {
+.contactErrorText {
   margin-top: $spacing-2;
   color: $error-600;
   font-size: $font-size-sm;
 }
 
-.successText {
+.contactSuccessText {
   color: $success-600;
   font-size: $font-size-sm;
 }

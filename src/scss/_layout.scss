@@ -24,53 +24,23 @@
 }
 
 .container-fluid {
-  max-width: none;
-  @include container();
-}
+  @include container(100%);
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
 
-// Row and column system
-.row {
-  margin-left: -$spacing-2;
-  margin-right: -$spacing-2;
-  @include flexbox;
-  @include flex-wrap(wrap);
+  @include respond-to("sm") {
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+  }
 
-  @include respond-to("md") {
-    margin-left: -$spacing-4;
-    margin-right: -$spacing-4;
+  @include respond-to("lg") {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
   }
 }
 
-// =============================================================================
-// RESPONSIVE GRID SYSTEM
-// =============================================================================
-
-// Generate responsive grid columns
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    flex: 0 0 math.percentage(math.div($i, 12));
-    max-width: math.percentage(math.div($i, 12));
-    padding-left: $spacing-2;
-    padding-right: $spacing-2;
-
-    @include respond-to("md") {
-      padding-left: $spacing-4;
-      padding-right: $spacing-4;
-    }
-  }
-}
-
-// Generate responsive grid classes for all breakpoints
-@each $breakpoint, $value in $breakpoints {
-  @include respond-to($breakpoint) {
-    @for $i from 1 through 12 {
-      .#{$breakpoint}\:col-#{$i} {
-        flex: 0 0 math.percentage(math.div($i, 12));
-        max-width: math.percentage(math.div($i, 12));
-      }
-    }
-  }
-}
+// Note: Row/column helpers are intentionally omitted.
+// Use flex utilities (flex/*) and grid utilities (grid/*) for layout.
 
 // =============================================================================
 // RESPONSIVE SPACING SYSTEM

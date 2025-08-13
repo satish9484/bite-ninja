@@ -1,11 +1,10 @@
-.section6 {
+.brandsRoot {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: color(surface-2);
   position: relative;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .brandsContainer {
+    @include container();
     padding: 0 20px;
     text-align: center;
   }
@@ -13,7 +12,7 @@
   h3 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: color(text-primary);
     margin-bottom: 20px;
     line-height: 1.2;
 
@@ -24,7 +23,7 @@
 
   p {
     font-size: 1.1rem;
-    color: #666666;
+    color: color(text-secondary);
     line-height: 1.6;
     margin-bottom: 50px;
     max-width: 600px;
@@ -33,21 +32,18 @@
   }
 
   .brandsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 40px;
     margin-top: 40px;
 
     @media (max-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
     }
 
-    .brandItem {
+    .brandsItem {
       position: relative;
       overflow: hidden;
       border-radius: 12px;
-      background: #ffffff;
+      background: color(surface);
       padding: 20px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -73,7 +69,7 @@
 }
 
 // Animation classes
-.animateIn {
+.brandsAnimateIn {
   animation: fadeInUp 0.8s ease-out;
   animation-fill-mode: both;
 

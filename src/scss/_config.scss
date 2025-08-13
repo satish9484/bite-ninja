@@ -20,7 +20,7 @@ $compress: false; // Set to true in production builds
 // Enable CSS comments in output
 $comments: true;
 
-// Enable CSS vendor prefixes
+// Enable CSS vendor prefixes (handled via mixins)
 $vendor-prefixes: true;
 
 // =============================================================================
@@ -38,12 +38,12 @@ $optimize: true;
 // =============================================================================
 
 // Define minimum browser versions for vendor prefixes
+// Note: Legacy MS flexbox support is handled in mixins
 $browser-minimum-versions: (
   chrome: 60,
   firefox: 60,
   safari: 12,
   edge: 79,
-  ie: 11,
 );
 
 // =============================================================================

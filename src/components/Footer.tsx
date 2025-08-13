@@ -2,9 +2,11 @@ import styles from "./styles/Footer.module.scss";
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.footerContent}>
+    <footer className={styles.footerRoot}>
+      <div className={`container ${styles.footerContainer}`}>
+        <div
+          className={`${styles.footerContent} d-grid grid-cols-1 md:grid-cols-3 gap-10`}
+        >
           <div className={styles.footerLeft}>
             <div className={styles.footerLogo}>
               <img src="/Images/footer_logo.png" alt="Bite Ninja Logo" />
@@ -29,7 +31,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className={styles.footerCenter}>
+          <div
+            className={`${styles.footerCenter} d-grid grid-cols-1 md:grid-cols-3 gap-8`}
+          >
             <div className={styles.footerSection}>
               <h4>Quick Links</h4>
               <ul>

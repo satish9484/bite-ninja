@@ -1,10 +1,17 @@
+import { useRef } from "react";
+import type { Swiper as SwiperInstance } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./styles/ServicesSection.module.scss";
 
 export default function ServicesSection() {
+  const swiperRef = useRef<SwiperInstance | null>(null);
   const services = [
     {
       id: 1,
-      title: "Drive through",
+      title: "services 1",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
       icon: "/Images/section_4_1.png",
@@ -34,30 +41,112 @@ export default function ServicesSection() {
       icon: "/Images/section_4_4.png",
       background: "/Images/section_3_bg.png",
     },
+    {
+      id: 5,
+      title: "Menu",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
+      icon: "/Images/section_4_4.png",
+      background: "/Images/section_3_bg.png",
+    },
+    {
+      id: 6,
+      title: "Drive through",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
+      icon: "/Images/section_4_4.png",
+      background: "/Images/section_3_bg.png",
+    },
   ];
 
   return (
-    <section className={styles.section4}>
-      <div className={styles.container}>
-        <h3 className={styles.animateIn}>Our Services</h3>
-        <div className={styles.servicesGrid}>
-          {services.map((service) => (
-            <div
-              key={service.id}
-              className={`${styles.serviceCard} ${styles.animateIn}`}
+    <section className={styles.servicesRoot}>
+      <div className={`container ${styles.servicesContainer}`}>
+        <h3 className={styles.servicesAnimateIn}>Our Services</h3>
+        <div className={styles.servicesCarouselWrap}>
+          <Swiper
+            className={styles.servicesCarousel}
+            modules={[Autoplay, Pagination]}
+            slidesPerView={1}
+            centeredSlides
+            centeredSlidesBounds
+            spaceBetween={24}
+            loop
+            autoplay={{ delay: 3000, disableOnInteraction: true }}
+            pagination={{ clickable: true }}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              992: { slidesPerView: 3 },
+            }}
+          >
+            {services.map((service) => (
+              <SwiperSlide key={service.id} className={styles.slide}>
+                <article className={styles.slideCard}>
+                  <img
+                    className={styles.slideImage}
+                    src={service.background}
+                    alt={service.title}
+                  />
+                  <div className={styles.slideBody}>
+                    <h4 className={styles.slideTitle}>{service.title}</h4>
+                    <p className={styles.slideDescription}>
+                      {service.description}
+                    </p>
+                    <a className={styles.slideCta} href="#">
+                      Read more
+                    </a>
+                  </div>
+                </article>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button
+            aria-label="Previous"
+            className={`${styles.navButton} ${styles.navPrev}`}
+            type="button"
+            onClick={() => swiperRef.current?.slidePrev()}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <div className={styles.cardBackground}>
-                <img src={service.background} alt="Service background" />
-              </div>
-              <div className={styles.cardContent}>
-                <figure className={styles.serviceIcon}>
-                  <img src={service.icon} alt={service.title} />
-                </figure>
-                <h4>{service.title}</h4>
-                <p>{service.description}</p>
-              </div>
-            </div>
-          ))}
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <button
+            aria-label="Next"
+            className={`${styles.navButton} ${styles.navNext}`}
+            type="button"
+            onClick={() => swiperRef.current?.slideNext()}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

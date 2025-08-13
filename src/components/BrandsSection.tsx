@@ -14,11 +14,13 @@ export default function BrandsSection() {
   ];
 
   return (
-    <section className={styles.section6}>
-      <div className={styles.container}>
-        <div className={styles.section6Header}>
-          <h4 className={styles.animateIn}>As you Seen on</h4>
-          <p className={styles.animateIn}>
+    <section className={styles.brandsRoot}>
+      <div className={`container ${styles.brandsContainer}`}>
+        <div
+          className={`${styles.section6Header} d-flex flex-column items-center`}
+        >
+          <h4 className={styles.brandsAnimateIn}>As you Seen on</h4>
+          <p className={styles.brandsAnimateIn}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas
             at justo,
             <br />
@@ -27,11 +29,13 @@ export default function BrandsSection() {
           </p>
         </div>
 
-        <div className={styles.brandsGrid}>
+        <div
+          className={`d-grid grid-cols-auto-fit gap-10 place-items-center ${styles.brandsGrid}`}
+        >
           {brands.map((brand) => (
             <div
               key={brand.id}
-              className={`${styles.brandItem} ${styles.animateIn}`}
+              className={`${styles.brandsItem} ${styles.brandsAnimateIn} d-flex items-center justify-center`}
             >
               <figure>
                 <img src={brand.src} alt={brand.alt} />

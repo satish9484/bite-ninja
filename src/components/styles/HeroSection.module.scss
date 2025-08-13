@@ -10,7 +10,7 @@
 // SECTION 1 - MAIN CONTAINER
 // =============================================================================
 
-.section1 {
+.heroRoot {
   // Background with specified color and opacity
   background: rgba(223, 96, 37, 0.1);
 
@@ -39,7 +39,7 @@
 // CONTAINER SYSTEM
 // =============================================================================
 
-.container {
+.heroContainer {
   // Simple declarations first
   width: 100%;
   height: 100%;
@@ -58,7 +58,7 @@
 // ROOT SECTION 1 - MAIN CONTENT WRAPPER
 // =============================================================================
 
-.rootSection1 {
+.heroContent {
   // Full height and width
   width: 100%;
   height: 100%;
@@ -80,20 +80,20 @@
 // FLEXBOX UTILITY CLASSES
 // =============================================================================
 
-.dFlexColumn {
+.heroFlexColumn {
   @include flexbox;
   @include flex-direction(column);
 }
 
-.justifyCenter {
+.heroJustifyCenter {
   @include justify-content(center);
 }
 
-.alignCenter {
+.heroAlignCenter {
   @include align-items(center);
 }
 
-.gap80 {
+.heroGap {
   gap: 80px;
 
   @include respond-to("md") {
@@ -109,7 +109,7 @@
 // H1 TITLE STYLING
 // =============================================================================
 
-.section1 h1 {
+.heroRoot h1 {
   // Typography using specified properties
   font-weight: 700;
   font-size: 80px;
@@ -196,7 +196,7 @@
 // =============================================================================
 
 // Optional: Add a subtle background highlight for even better contrast
-.section1 h1::before,
+.heroRoot h1::before,
 .heroSubtitle::before {
   content: "";
   position: absolute;
@@ -222,7 +222,7 @@
 }
 
 // Hover effects for interactive feel
-.section1 h1:hover,
+.heroRoot h1:hover,
 .heroSubtitle:hover {
   transform: translateY(-2px);
   transition: transform 0.3s ease;
@@ -235,7 +235,7 @@
 // SECTION 1 FIGURE - BACKGROUND IMAGE
 // =============================================================================
 
-.section1Figure {
+.heroFigure {
   // Background and border using specified properties
   background-color: #df6025;
   border: 60px solid #df6025;
@@ -278,7 +278,7 @@
 // FIGURE IMAGE - BACKGROUND IMAGE
 // =============================================================================
 
-.section1Figure img {
+.heroFigure img {
   // Image properties for background
   width: 100%;
   height: 100%;
@@ -298,16 +298,16 @@
 
 // Mobile-first responsive design
 @include respond-to("xs") {
-  .section1 {
+  .heroRoot {
     min-height: 700px;
     max-height: 700px;
   }
 
-  .gap80 {
+  .heroGap {
     gap: 30px;
   }
 
-  .section1 h1 {
+  .heroRoot h1 {
     br {
       display: none;
     }
@@ -319,7 +319,7 @@
 // =============================================================================
 
 // Focus states for better accessibility
-.section1 h1:focus {
+.heroRoot h1:focus {
   @include focus-visible {
     outline: 2px solid $primary-500;
     outline-offset: 4px;
@@ -328,11 +328,11 @@
 
 // High contrast mode support
 @media (prefers-contrast: high) {
-  .section1 {
+  .heroRoot {
     background: rgba(223, 96, 37, 0.2);
   }
 
-  .section1 h1 {
+  .heroRoot h1 {
     color: $neutral-900;
   }
 }
@@ -342,11 +342,11 @@
 // =============================================================================
 
 @media print {
-  .section1Figure {
+  .heroFigure {
     display: none;
   }
 
-  .section1 {
+  .heroRoot {
     background: none;
     min-height: auto;
     height: auto;

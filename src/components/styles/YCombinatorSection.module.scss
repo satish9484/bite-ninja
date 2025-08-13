@@ -1,11 +1,10 @@
-.section5 {
+.ycRoot {
   padding: 80px 0;
-  background: #ffffff;
+  background: color(surface);
   position: relative;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .ycContainer {
+    @include container();
     padding: 0 20px;
     text-align: center;
   }
@@ -13,7 +12,7 @@
   h3 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: color(text-primary);
     margin-bottom: 20px;
     line-height: 1.2;
 
@@ -24,7 +23,7 @@
 
   p {
     font-size: 1.1rem;
-    color: #666666;
+    color: color(text-secondary);
     line-height: 1.6;
     margin-bottom: 50px;
     max-width: 600px;
@@ -32,18 +31,18 @@
     margin-right: auto;
   }
 
-  .imagesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .ycGrid {
+    @include flexbox;
+    @include flex-direction(column);
     gap: 30px;
     margin-top: 40px;
 
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+    @include respond-to("md") {
+      @include flex-direction(row);
+      gap: 32px;
     }
 
-    .imageContainer {
+    .ycImage {
       position: relative;
       overflow: hidden;
       border-radius: 12px;
@@ -57,6 +56,8 @@
       img {
         width: 100%;
         height: auto;
+        display: block;
+        object-fit: cover;
         transition: transform 0.3s ease;
       }
 
@@ -68,7 +69,7 @@
 }
 
 // Animation classes
-.animateIn {
+.ycAnimateIn {
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -80,5 +81,23 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+// Large screen explicit sizing per design
+@include respond-to("lg") {
+  .ycRoot {
+    .ycFig1 img {
+      width: 380px;
+      height: 150px;
+    }
+    .ycFig2 img {
+      width: 178px;
+      height: 114px;
+    }
+    .ycFig3 img {
+      width: 380px;
+      height: 150px;
+    }
   }
 }

@@ -1,20 +1,19 @@
-.section3 {
+.ninjaRoot {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: linear-gradient(135deg, color(surface-2) 0%, color(surface) 100%);
   position: relative;
   overflow: hidden;
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .ninjaContainer {
+    @include container();
     padding: 0 20px;
   }
 
-  .rootSection2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .ninjaGrid {
+    @include grid;
+    @include grid-template-columns(1fr 1fr);
     gap: 80px;
-    align-items: center;
+    @include align-items(center);
     min-height: 600px;
 
     @media (max-width: 1024px) {
@@ -33,18 +32,18 @@
     }
   }
 
-  .section2Right {
+  .ninjaRight {
     @media (max-width: 768px) {
       order: 2;
     }
 
-    .heading {
+    .ninjaHeading {
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      color: #1a1a1a;
+      color: color(text-primary);
       margin-bottom: 24px;
       line-height: 1.2;
-      background: linear-gradient(135deg, #2c3e50, #34495e);
+      background: linear-gradient(135deg, $primary-700, $primary-600);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -54,9 +53,9 @@
       }
     }
 
-    .description {
+    .ninjaDescription {
       font-size: clamp(1rem, 2.5vw, 1.125rem);
-      color: #555;
+      color: color(text-secondary);
       line-height: 1.7;
       margin-bottom: 36px;
       max-width: 500px;
@@ -67,12 +66,12 @@
       }
     }
 
-    .btnLetsGo {
+    .ninjaCtaButton {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: linear-gradient(135deg, #ff6b35, #f7931e);
-      color: white;
+      background: linear-gradient(135deg, $primary-600, $primary-500);
+      color: color(primary-contrast);
       padding: 16px 32px;
       border: none;
       border-radius: 50px;
@@ -81,7 +80,7 @@
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       position: relative;
       overflow: hidden;
 
@@ -103,8 +102,8 @@
 
       &:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
-        background: linear-gradient(135deg, #f7931e, #ff6b35);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        background: linear-gradient(135deg, $primary-500, $primary-600);
       }
 
       &:hover::before {
@@ -139,7 +138,7 @@
     }
   }
 
-  .section3Left {
+  .ninjaLeft {
     position: relative;
     display: flex;
     justify-content: start;
@@ -156,7 +155,7 @@
       min-height: 300px;
     }
 
-    .section2LeftFigure2 {
+    .ninjaFigure {
       width: 482px;
       height: 482px;
 
@@ -164,7 +163,12 @@
       margin: 0;
       z-index: 2;
       padding: 12px;
-      background: linear-gradient(135deg, #ff6b35, #f7931e, #ff6b35);
+      background: linear-gradient(
+        135deg,
+        $primary-600,
+        $primary-500,
+        $primary-600
+      );
       border-radius: 25px;
       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
         rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -214,23 +218,23 @@
 
 // Responsive breakpoints for better mobile experience
 @media (max-width: 640px) {
-  .section3 {
+  .ninjaRoot {
     padding: 60px 0;
 
-    .container {
+    .ninjaContainer {
       padding: 0 16px;
     }
 
-    .rootSection2 {
+    .ninjaGrid {
       gap: 30px;
     }
 
-    .section2Right {
-      .heading {
+    .ninjaRight {
+      .ninjaHeading {
         margin-bottom: 18px;
       }
 
-      .description {
+      .ninjaDescription {
         margin-bottom: 24px;
         font-size: 1rem;
       }
@@ -239,19 +243,19 @@
 }
 
 @media (max-width: 480px) {
-  .section3 {
+  .ninjaRoot {
     padding: 50px 0;
 
-    .rootSection2 {
+    .ninjaGrid {
       gap: 25px;
     }
 
-    .section2Right {
-      .heading {
+    .ninjaRight {
+      .ninjaHeading {
         margin-bottom: 16px;
       }
 
-      .description {
+      .ninjaDescription {
         margin-bottom: 20px;
         line-height: 1.6;
       }

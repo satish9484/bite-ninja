@@ -1,6 +1,10 @@
-.footer {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: #ffffff;
+.footerRoot {
+  background: linear-gradient(
+    135deg,
+    color(background) 0%,
+    color(surface-2) 100%
+  );
+  color: color(text-primary);
   padding: 60px 0 20px;
   position: relative;
   overflow: hidden;
@@ -18,9 +22,8 @@
     z-index: 1;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .footerContainer {
+    @include container();
     padding: 0 20px;
     position: relative;
     z-index: 2;
@@ -49,7 +52,7 @@
     }
 
     .footerDescription {
-      color: #cccccc;
+      color: color(text-secondary);
       line-height: 1.6;
       margin-bottom: 25px;
       font-size: 14px;
@@ -67,7 +70,7 @@
         height: 40px;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
-        color: #ffffff;
+        color: color(text-primary);
         text-decoration: none;
         transition: all 0.3s ease;
 
@@ -95,7 +98,7 @@
 
     .footerSection {
       h4 {
-        color: #ffffff;
+        color: color(text-primary);
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 20px;
@@ -108,7 +111,7 @@
           left: 0;
           width: 30px;
           height: 2px;
-          background: linear-gradient(90deg, #ff6b35, #f7931e);
+          background: linear-gradient(90deg, $primary-500, $primary-600);
         }
       }
 
@@ -121,14 +124,14 @@
           margin-bottom: 12px;
 
           a {
-            color: #cccccc;
+            color: color(text-secondary);
             text-decoration: none;
             font-size: 14px;
             transition: color 0.3s ease;
             position: relative;
 
             &:hover {
-              color: #ff6b35;
+              color: color(primary);
             }
 
             &::before {
@@ -174,7 +177,7 @@
   }
 
   .footerBottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid color(border);
     padding-top: 20px;
 
     .footerBottomContent {
@@ -190,7 +193,7 @@
       }
 
       p {
-        color: #999999;
+        color: color(text-secondary);
         font-size: 14px;
         margin: 0;
       }
@@ -201,13 +204,13 @@
         flex-wrap: wrap;
 
         a {
-          color: #999999;
+          color: color(text-secondary);
           text-decoration: none;
           font-size: 12px;
           transition: color 0.3s ease;
 
           &:hover {
-            color: #ff6b35;
+            color: color(primary);
           }
         }
       }
@@ -216,7 +219,7 @@
 }
 
 // Animation classes
-.footer {
+.footerRoot {
   animation: fadeInUp 0.8s ease-out;
 
   .footerContent > * {

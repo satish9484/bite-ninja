@@ -47,24 +47,69 @@
   flex-wrap: $wrap;
 }
 
+// Internal helpers to map flex alignment to legacy MS syntax
+@function _ms-pack($value) {
+  @if $value == flex-start {
+    @return start;
+  }
+  @if $value == flex-end {
+    @return end;
+  }
+  @if $value == center {
+    @return center;
+  }
+  @if $value == space-between {
+    @return justify;
+  }
+  @if $value == space-around {
+    @return distribute;
+  }
+  @if $value == space-evenly {
+    @return distribute;
+  }
+  @return start;
+}
+
+@function _ms-align($value) {
+  @if $value == flex-start {
+    @return start;
+  }
+  @if $value == flex-end {
+    @return end;
+  }
+  @if $value == center {
+    @return center;
+  }
+  @if $value == baseline {
+    @return baseline;
+  }
+  @if $value == stretch {
+    @return stretch;
+  }
+  @return start;
+}
+
 @mixin justify-content($justify) {
+  // Legacy syntaxes
   -webkit-justify-content: $justify;
-  -moz-justify-content: $justify;
-  -ms-justify-content: $justify;
+  -ms-flex-pack: _ms-pack($justify);
+  // Modern
   justify-content: $justify;
 }
 
 @mixin align-items($align) {
+  // Legacy syntaxes
   -webkit-align-items: $align;
-  -moz-align-items: $align;
-  -ms-align-items: $align;
+  -ms-flex-align: _ms-align($align);
+  // Modern
   align-items: $align;
 }
 
 @mixin align-self($align) {
+  // Legacy syntaxes
   -webkit-align-self: $align;
-  -moz-align-self: $align;
-  -ms-align-self: $align;
+  -ms-flex-item-align: _ms-align($align);
+  // Modern
   align-self: $align;
 }
 
@@ -419,6 +464,33 @@
       @content;
     }
   }
+}
+
+// Cross-browser sticky positioning
+@mixin sticky($top: 0) {
+  position: -webkit-sticky;
+  position: sticky;
+  top: $top;
+}
+
+// Cross-browser user-select
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
+}
+
+// Cross-browser appearance
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+// Touch momentum scroll (iOS)
+@mixin touch-scroll {
+  -webkit-overflow-scrolling: touch;
 }
 
 // Reduced motion mixin

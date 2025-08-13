@@ -21,7 +21,7 @@
   border: 1px solid transparent;
   border-radius: $border-radius-md;
   cursor: pointer;
-  transition: all $transition-base;
+  @include transition(all $transition-base);
   white-space: nowrap;
 
   @include respond-to("md") {
@@ -31,27 +31,27 @@
 
   &:hover {
     @include hover {
-      transform: translateY(-1px);
-      box-shadow: $shadow-lg;
+      @include transform(translateY(-1px));
+      @include box-shadow($shadow-lg);
     }
   }
 
   &:active {
-    transform: translateY(0);
+    @include transform(translateY(0));
   }
 
   &:focus {
     @include focus-visible {
-      outline: 2px solid $primary-500;
+      outline: 2px solid color(primary);
       outline-offset: 2px;
     }
   }
 }
 
 .btn-primary {
-  background-color: $primary-600;
-  border-color: $primary-600;
-  color: white;
+  background-color: color(primary);
+  border-color: color(primary);
+  color: color(primary-contrast);
 
   &:hover {
     @include hover {
@@ -62,9 +62,9 @@
 }
 
 .btn-secondary {
-  background-color: $neutral-100;
-  border-color: $neutral-300;
-  color: $color-text-primary;
+  background-color: color(surface-2);
+  border-color: color(border);
+  color: color(text-primary);
 
   &:hover {
     @include hover {
@@ -79,25 +79,25 @@
 // =============================================================================
 
 .card {
-  background-color: white;
-  border: 1px solid $neutral-200;
+  background-color: color(surface);
+  border: 1px solid color(border);
   border-radius: $border-radius-lg;
-  box-shadow: $shadow-sm;
+  @include box-shadow($shadow-sm);
   overflow: hidden;
-  transition: all $transition-base;
+  @include transition(all $transition-base);
 
   &:hover {
     @include hover {
-      box-shadow: $shadow-md;
-      transform: translateY(-2px);
+      @include box-shadow($shadow-md);
+      @include transform(translateY(-2px));
     }
   }
 }
 
 .card-header {
   padding: $spacing-4;
-  border-bottom: 1px solid $neutral-200;
-  background-color: $neutral-50;
+  border-bottom: 1px solid color(border);
+  background-color: color(surface-2);
 
   @include respond-to("md") {
     padding: $spacing-6;
@@ -114,8 +114,8 @@
 
 .card-footer {
   padding: $spacing-4;
-  border-top: 1px solid $neutral-200;
-  background-color: $neutral-50;
+  border-top: 1px solid color(border);
+  background-color: color(surface-2);
 
   @include respond-to("md") {
     padding: $spacing-6;
@@ -138,7 +138,7 @@
   display: block;
   margin-bottom: $spacing-2;
   font-weight: $font-weight-medium;
-  color: $color-text-primary;
+  color: color(text-primary);
 
   @include respond-to("md") {
     margin-bottom: $spacing-3;
@@ -151,11 +151,11 @@
   padding: $spacing-2 $spacing-3;
   font-size: $font-size-base;
   line-height: $line-height-tight;
-  color: $color-text-primary;
-  background-color: white;
-  border: 1px solid $neutral-300;
+  color: color(text-primary);
+  background-color: color(surface);
+  border: 1px solid color(border);
   border-radius: $border-radius-md;
-  transition: all $transition-base;
+  @include transition(all $transition-base);
 
   @include respond-to("md") {
     padding: $spacing-3 $spacing-4;
@@ -165,7 +165,7 @@
   &:focus {
     @include focus-visible {
       outline: none;
-      border-color: $primary-500;
+      border-color: color(primary);
       box-shadow: 0 0 0 3px rgba($primary-500, 0.1);
     }
   }
@@ -204,7 +204,7 @@
 .table td {
   padding: $spacing-2 $spacing-3;
   text-align: left;
-  border-bottom: 1px solid $neutral-200;
+  border-bottom: 1px solid color(border);
 
   @include respond-to("md") {
     padding: $spacing-3 $spacing-4;
@@ -214,7 +214,7 @@
 .table th {
   background-color: $neutral-50;
   font-weight: $font-weight-semibold;
-  color: $color-text-primary;
+  color: color(text-primary);
 }
 
 // =============================================================================
@@ -239,9 +239,9 @@
 }
 
 .modal-dialog {
-  background-color: white;
+  background-color: color(surface);
   border-radius: $border-radius-lg;
-  box-shadow: $shadow-2xl;
+  @include box-shadow($shadow-2xl);
   max-width: 90vw;
   max-height: 90vh;
   overflow: auto;
