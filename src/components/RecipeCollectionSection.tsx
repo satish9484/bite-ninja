@@ -2,7 +2,7 @@ import styles from "./styles/RecipeCollectionSection.module.scss";
 
 export default function RecipeCollectionSection() {
   return (
-    <section className={styles.recipeRoot}>
+    <section id="ninjas" className={styles.recipeRoot}>
       <div className={`container ${styles.recipeContainer}`}>
         <div
           className={`d-grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-16 sm:gap-10 ${styles.recipeGrid}`}

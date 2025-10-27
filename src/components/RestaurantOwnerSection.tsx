@@ -2,7 +2,7 @@ import styles from "./styles/RestaurantOwnerSection.module.scss";
 
 export default function RestaurantOwnerSection() {
   return (
-    <section className={styles.ownerRoot}>
+    <section id="restaurants" className={styles.ownerRoot}>
       <div className={`container ${styles.ownerContainer}`}>
         <div
           className={`d-grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-16 sm:gap-10 place-items-center ${styles.ownerGrid}`}

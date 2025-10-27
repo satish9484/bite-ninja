@@ -17,6 +17,20 @@ export default function Header() {
     } catch {}
   };
 
+  // Handle smooth scrolling for anchor links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute("href");
+    if (href?.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      setIsMobileMenuOpen(false); // Close mobile menu after navigation
+    }
+  };
+
   useEffect(() => {
     const root = document.documentElement;
     setIsDarkMode(root.getAttribute("data-theme") === "dark");
@@ -38,24 +52,46 @@ export default function Header() {
             <li className={styles.headerNavItem}>
               <a
                 href="#home"
+                onClick={handleNavClick}
                 className={`${styles.headerNavLink} ${styles.active}`}
               >
                 Home
               </a>
             </li>
             <li className={styles.headerNavItem}>
-              <a href="#restaurants" className={styles.headerNavLink}>
+              <a
+                href="#restaurants"
+                onClick={handleNavClick}
+                className={styles.headerNavLink}
+              >
                 Restaurants
               </a>
             </li>
             <li className={styles.headerNavItem}>
-              <a href="#ninjas" className={styles.headerNavLink}>
-                Ninjas
+              <a
+                href="#ninjas"
+                onClick={handleNavClick}
+                className={styles.headerNavLink}
+              >
+                Recipes
               </a>
             </li>
             <li className={styles.headerNavItem}>
-              <a href="#about" className={styles.headerNavLink}>
-                About
+              <a
+                href="#about"
+                onClick={handleNavClick}
+                className={styles.headerNavLink}
+              >
+                Menu
+              </a>
+            </li>
+            <li className={styles.headerNavItem}>
+              <a
+                href="#contact"
+                onClick={handleNavClick}
+                className={styles.headerNavLink}
+              >
+                Contact
               </a>
             </li>
           </ul>
@@ -101,28 +137,45 @@ export default function Header() {
             <li className={styles.headerMobileNavItem}>
               <a
                 href="#home"
+                onClick={handleNavClick}
                 className={`${styles.headerMobileNavLink} ${styles.active}`}
               >
                 Home
               </a>
             </li>
             <li className={styles.headerMobileNavItem}>
-              <a href="#restaurants" className={styles.headerMobileNavLink}>
+              <a
+                href="#restaurants"
+                onClick={handleNavClick}
+                className={styles.headerMobileNavLink}
+              >
                 Restaurants
               </a>
             </li>
             <li className={styles.headerMobileNavItem}>
-              <a href="#ninjas" className={styles.headerMobileNavLink}>
-                Ninjas
+              <a
+                href="#ninjas"
+                onClick={handleNavClick}
+                className={styles.headerMobileNavLink}
+              >
+                Recipes
               </a>
             </li>
             <li className={styles.headerMobileNavItem}>
-              <a href="#about" className={styles.headerMobileNavLink}>
-                About
+              <a
+                href="#about"
+                onClick={handleNavClick}
+                className={styles.headerMobileNavLink}
+              >
+                Menu
               </a>
             </li>
             <li className={styles.headerMobileNavItem}>
-              <a href="#contact" className={styles.headerMobileContactLink}>
+              <a
+                href="#contact"
+                onClick={handleNavClick}
+                className={styles.headerMobileContactLink}
+              >
                 Contact
               </a>
             </li>

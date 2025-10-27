@@ -69,11 +69,19 @@
   }
 
   @include respond-to("sm") {
-    gap: 40px;
-    padding-top: 120px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    gap: 30px;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media (max-width: 375px) {
+    gap: 24px;
+    padding-top: 90px;
+    padding-bottom: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
@@ -85,7 +93,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  z-index: 3;
+  z-index: 5; // Ensure text is above all decorative elements
+  position: relative;
   align-items: flex-start;
   justify-content: center;
   flex: 0 1 45%;
@@ -98,7 +107,11 @@
   }
 
   @include respond-to("sm") {
-    gap: 20px;
+    gap: 16px;
+  }
+
+  @media (max-width: 375px) {
+    gap: 12px;
   }
 }
 
@@ -115,7 +128,11 @@
   }
 
   @include respond-to("sm") {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 12px;
   }
 }
 
@@ -124,10 +141,23 @@
   font-weight: 700;
   font-size: clamp(48px, 8vw, 80px);
   line-height: 1.1;
-  color: $food-accent-coral; // Theme coral/red from _colors.scss
+  color: $food-title-light; // Light theme: brown/red-brown
   margin: 0;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  position: relative;
+  z-index: 3;
+
+  // Text shadow for better readability
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1),
+    -1px -1px 2px rgba(255, 255, 255, 0.3);
+
+  // Dark mode - deep red
+  [data-theme="dark"] & {
+    color: $food-title-dark;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5),
+      -1px -1px 2px rgba(255, 255, 255, 0.1);
+  }
 
   @include respond-to("xl") {
     font-size: clamp(44px, 7vw, 72px);
@@ -142,7 +172,12 @@
   }
 
   @include respond-to("sm") {
-    font-size: clamp(32px, 9vw, 48px);
+    font-size: clamp(28px, 8vw, 44px);
+    line-height: 1.15;
+  }
+
+  @media (max-width: 375px) {
+    font-size: clamp(24px, 7vw, 36px);
   }
 }
 
@@ -161,17 +196,19 @@
 
   @include respond-to("sm") {
     font-size: 14px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 13px;
   }
 }
 
 .heroButton {
   // Button styling with theme colors
-  background: linear-gradient(
-    135deg,
-    $food-accent-orange 0%,
-    $food-accent-coral 100%
-  );
-  color: $food-text-light; // Theme color for button text
+  background: linear-gradient(135deg, $orange-500 0%, $error-500 100%);
+  color: $white; // White text for contrast
   font-family: "Lato", sans-serif;
   font-weight: 600;
   font-size: 18px;
@@ -179,18 +216,39 @@
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(223, 96, 37, 0.3);
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3); // Orange shadow
   align-self: flex-start;
   margin-top: 16px;
+
+  // Dark mode support
+  [data-theme="dark"] & {
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+
+    &:hover {
+      background: linear-gradient(135deg, $orange-600 0%, $error-600 100%);
+    }
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, $orange-600 0%, $error-600 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(249, 115, 22, 0.4);
+  }
 
   @include respond-to("md") {
     align-self: center;
   }
 
   @include respond-to("sm") {
-    font-size: 16px;
-    padding: 16px 40px;
+    font-size: 15px;
+    padding: 14px 36px;
     margin-top: 12px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 14px;
+    padding: 12px 32px;
+    margin-top: 8px;
   }
 }
 
@@ -257,6 +315,16 @@
     width: 280px;
     height: 280px;
   }
+
+  @media (max-width: 375px) {
+    width: 260px;
+    height: 260px;
+  }
+
+  @media (max-width: 320px) {
+    width: 220px;
+    height: 220px;
+  }
 }
 
 .dishImage {
@@ -286,10 +354,10 @@
 .decorative {
   position: absolute;
   pointer-events: none;
-  z-index: 2;
+  z-index: 1; // Behind text content
 
   @include respond-to("sm") {
-    opacity: 0.7;
+    opacity: 0.6; // More transparent on mobile
   }
 }
 
@@ -540,36 +608,6 @@
 // =============================================================================
 // FOLLOW ME - RIGHT SIDE
 // =============================================================================
-
-.followMe {
-  position: fixed;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-
-  span {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: $food-text-light; // Theme color
-    letter-spacing: 0.15em;
-  }
-
-  @include respond-to("md") {
-    right: 20px;
-
-    span {
-      font-size: 14px;
-    }
-  }
-
-  @include respond-to("sm") {
-    display: none; // Hide on mobile
-  }
-}
 
 // =============================================================================
 // ACCESSIBILITY ENHANCEMENTS

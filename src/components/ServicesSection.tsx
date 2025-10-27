@@ -61,7 +61,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className={styles.servicesRoot}>
+    <section id="about" className={styles.servicesRoot}>
       <div className={`container ${styles.servicesContainer}`}>
         <h3 className={styles.servicesAnimateIn}>Our Popular Dishes</h3>
         <div className={styles.servicesCarouselWrap}>

@@ -68,7 +68,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section className={styles.contactRoot} aria-labelledby="contact-title">
+    <section
+      id="contact"
+      className={styles.contactRoot}
+      aria-labelledby="contact-title"
+    >
       <div
         className={`container d-flex flex-column md:flex-row items-center ${styles.contactContainer}`}
       >

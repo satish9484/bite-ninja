@@ -2,7 +2,7 @@ import styles from "./styles/HeroSection.module.scss";
 
 export default function HeroSection() {
   return (
-    <section className={styles.heroRoot}>
+    <section id="home" className={styles.heroRoot}>
       <div className={styles.heroContainer}>
         {/* Left Column - Text Content */}
         <div className={styles.heroLeft}>
@@ -71,11 +71,6 @@ export default function HeroSection() {
           alt=""
           className={`${styles.decorative} ${styles.decorativeChili}`}
         />
-
-        {/* Follow Me - Right Side */}
-        <div className={styles.followMe}>
-          <span>Follow Me</span>
-        </div>
       </div>
     </section>
   );
