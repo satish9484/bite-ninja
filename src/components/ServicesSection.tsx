@@ -11,58 +11,59 @@ export default function ServicesSection() {
   const services = [
     {
       id: 1,
-      title: "services 1",
+      title: "Breakfast Special",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
-      icon: "/Images/section_4_1.png",
-      background: "/Images/section_4_bg.png",
+        "Start your day with our delicious breakfast options featuring fresh ingredients and wholesome flavors.",
+      icon: "/Images/dishPhoto/breakFast_1.png",
+      background: "/Images/dishPhoto/breakFast_1.png",
     },
     {
       id: 2,
-      title: "Front counter",
+      title: "Morning Delight",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
-      icon: "/Images/section_4_2.png",
-      background: "/Images/section_4_bg.png",
+        "A perfect morning meal with fresh eggs, crispy toast, and your choice of sides.",
+      icon: "/Images/dishPhoto/breakFast_2.png",
+      background: "/Images/dishPhoto/breakFast_2.png",
     },
     {
       id: 3,
-      title: "Call Center",
+      title: "Healthy Start",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
-      icon: "/Images/section_4_3.png",
-      background: "/Images/section_4_bg.png",
+        "Nutritious breakfast bowls packed with fresh fruits, granola, and natural yogurt.",
+      icon: "/Images/dishPhoto/breakFast_3.png",
+      background: "/Images/dishPhoto/breakFast_3.png",
     },
     {
       id: 4,
-      title: "Curbside",
+      title: "Premium Breakfast",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
-      icon: "/Images/section_4_4.png",
-      background: "/Images/section_3_bg.png",
+        "Indulge in our signature breakfast platter with all your morning favorites.",
+      icon: "/Images/dishPhoto/brekFast_4.png",
+      background: "/Images/dishPhoto/brekFast_4.png",
     },
     {
       id: 5,
-      title: "Menu",
+      title: "Wellness Breakfast",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
-      icon: "/Images/section_4_4.png",
-      background: "/Images/section_3_bg.png",
+        "A balanced meal to fuel your day with the right nutrients and energy.",
+      icon: "/Images/dishPhoto/healthBreakFast.png",
+      background: "/Images/dishPhoto/healthBreakFast.png",
     },
+    // Reusing for 6th item since only 5 images available
     {
       id: 6,
-      title: "Drive through",
+      title: "Breakfast Classic",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas at justo, tellus amet dignissim. Quam enim est dignissim",
-      icon: "/Images/section_4_4.png",
-      background: "/Images/section_3_bg.png",
+        "Traditional breakfast favorites made fresh with quality ingredients.",
+      icon: "/Images/dishPhoto/breakFast_1.png",
+      background: "/Images/dishPhoto/breakFast_1.png",
     },
   ];
 
   return (
     <section className={styles.servicesRoot}>
       <div className={`container ${styles.servicesContainer}`}>
-        <h3 className={styles.servicesAnimateIn}>Our Services</h3>
+        <h3 className={styles.servicesAnimateIn}>Our Popular Dishes</h3>
         <div className={styles.servicesCarouselWrap}>
           <Swiper
             className={styles.servicesCarousel}

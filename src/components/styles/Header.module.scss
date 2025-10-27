@@ -1,91 +1,114 @@
 // =============================================================================
-// HEADER COMPONENT STYLES - CLEAN & PROFESSIONAL DESIGN
+// HEADER COMPONENT STYLES - FOOD LANDING PAGE
+// Dark theme header with clean navigation
 // =============================================================================
 
+// Import global SCSS variables and mixins
+@use "../../scss/variable" as *;
+@use "../../scss/mixin" as *;
+
 // =============================================================================
-// HEADER CONTAINER
+// HEADER ROOT
 // =============================================================================
 
 .headerRoot {
-  background-color: color(background);
-  border-bottom: 1px solid color(border);
-  box-shadow: $shadow-sm;
-  position: sticky;
+  background: color(surface); // White background from theme
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: $z-index-sticky;
   width: 100%;
+  border-bottom: 1px solid color(border);
+  backdrop-filter: blur(10px);
 }
 
 .headerContainer {
-  @include container();
-  @include flexbox;
-  @include align-items(center);
-  @include justify-content(space-between);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-top: $spacing-4;
   padding-bottom: $spacing-4;
+  padding-left: 24px;
+  padding-right: 24px;
   min-height: $header-height-md;
   gap: $spacing-4;
-
-  @include respond-to("sm") {
-    padding-top: $spacing-5;
-    padding-bottom: $spacing-5;
-    min-height: $header-height-sm;
-    gap: $spacing-3;
-  }
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 
   @include respond-to("lg") {
-    padding-top: $spacing-6;
-    padding-bottom: $spacing-6;
-    min-height: $header-height-lg;
-    gap: $spacing-6;
+    gap: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include respond-to("md") {
+    gap: 30px;
+    min-height: 70px;
+    padding-left: 24px;
+    padding-right: 24;
+  }
+
+  @include respond-to("sm") {
+    gap: 20px;
+    min-height: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
 // =============================================================================
-// LOGO SECTION
+// LOGO
 // =============================================================================
 
 .headerLogo {
-  @include flexbox;
-  @include align-items(center);
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
 .headerLogoLink {
-  @include flexbox;
-  @include align-items(center);
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  color: color(primary);
-  font-weight: $font-weight-bold;
-  font-size: $font-size-xl;
-  gap: $spacing-3;
-
-  @include respond-to("md") {
-    font-size: $font-size-2xl;
-    gap: $spacing-4;
-  }
+  transition: transform 0.3s ease;
 
   &:hover {
-    color: $primary-700;
+    transform: scale(1.05);
   }
 }
 
-.headerLogoImage {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+.headerLogoIcon {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: $food-text-light; // White
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    $food-accent-orange 0%,
+    $food-accent-coral 100%
+  );
+  border-radius: 10px;
 
   @include respond-to("md") {
-    width: 48px;
-    height: 48px;
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
   }
-}
 
-.headerLogoText {
-  font-family: $font-family-base;
-  font-weight: $font-weight-bold;
-  color: color(primary);
-  white-space: nowrap;
+  @include respond-to("sm") {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
 }
 
 // =============================================================================
@@ -94,74 +117,159 @@
 
 .headerNav {
   display: none;
+  flex: 1;
+  justify-content: center;
 
   @include respond-to("md") {
-    display: block;
+    display: flex;
   }
 }
 
 .headerNavList {
-  @include flexbox;
-  @include align-items(center);
+  display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: $spacing-8;
+  gap: 50px;
+
+  @include respond-to("lg") {
+    gap: 60px;
+  }
+
+  @include respond-to("md") {
+    gap: 40px;
+  }
 }
 
 .headerNavItem {
   margin: 0;
+  position: relative;
 }
 
 .headerNavLink {
-  @include flexbox;
-  @include align-items(center);
-  @include flex-direction(column);
+  display: flex;
+  align-items: center;
+  gap: 6px;
   text-decoration: none;
-  color: color(text-secondary);
-  font-weight: $font-weight-medium;
-  font-size: $font-size-sm;
-  padding: $spacing-2 $spacing-3;
-  border-radius: $border-radius-md;
-  transition: all $transition-base;
-  gap: $spacing-1;
-  min-width: 80px;
-  text-align: center;
-
-  @include respond-to("lg") {
-    font-size: $font-size-base;
-    padding: $spacing-3 $spacing-4;
-    gap: $spacing-2;
-    min-width: 100px;
-  }
+  color: color(text-secondary); // Theme gray text
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+  position: relative;
 
   &:hover {
-    color: color(primary);
-    background-color: $primary-50;
+    color: color(text-primary); // Theme black on hover
   }
 
   &.active {
-    color: color(primary);
-    background-color: $primary-50;
+    color: color(success); // Theme green for active
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: color(success);
+    }
   }
 }
 
-.headerNavIcon {
-  font-size: $font-size-xl;
-  line-height: 1;
+.dropdownIcon {
+  width: 12px;
+  height: 8px;
+  margin-left: 4px;
+  transition: transform 0.3s ease;
+}
 
-  @include respond-to("lg") {
-    font-size: $font-size-2xl;
+.hasDropdown:hover .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+// =============================================================================
+// HEADER ACTIONS (RIGHT SIDE)
+// =============================================================================
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-shrink: 0;
+
+  min-width: 100px;
+
+  @include respond-to("md") {
+    gap: 25px;
   }
 }
 
-.headerNavText {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-tight;
+// Search button removed - not needed
 
-  @include respond-to("lg") {
-    font-size: $font-size-sm;
+.headerThemeToggle {
+  background: color(surface-2); // Theme light gray background
+  border: 1px solid color(border);
+  padding: 10px 20px;
+  cursor: pointer;
+  color: color(text-primary); // Theme black text
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  white-space: nowrap;
+
+  &:hover {
+    background: color(surface);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @include respond-to("sm") {
+    padding: 8px 16px;
+    min-width: 60px;
+  }
+}
+
+.headerContactButton {
+  background: $food-text-light; // White background
+  color: $food-bg-pure-black; // Black text
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @include respond-to("md") {
+    display: inline-flex;
+  }
+
+  @include respond-to("sm") {
+    display: none; // Hide on mobile, show in mobile menu
   }
 }
 
@@ -172,49 +280,44 @@
 .headerMobileToggle {
   background: none;
   border: none;
-  padding: $spacing-3;
+  padding: 8px;
   cursor: pointer;
-  border-radius: $border-radius-md;
-  transition: background-color $transition-base;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
   flex-shrink: 0;
   min-width: 44px;
   min-height: 44px;
-  @include flexbox;
-  @include flex-direction(column);
-  @include align-items(center);
-  @include justify-content(center);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 
   @include respond-to("md") {
     display: none;
   }
 
   &:hover {
-    background-color: $neutral-100;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   &.active {
-    background-color: $primary-50;
-  }
-
-  &:focus {
-    outline: 2px solid $primary-500;
-    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.1);
   }
 }
 
 .headerHamburgerLine {
   display: block;
-  width: 20px;
+  width: 22px;
   height: 2px;
-  background-color: color(text-primary);
-  margin: 3px 0;
-  border-radius: 1px;
-  transition: all $transition-base;
+  background-color: color(text-primary); // Theme black
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 .headerMobileToggle.active .headerHamburgerLine {
   &:nth-child(1) {
-    transform: rotate(45deg) translate(4px, 4px);
+    transform: rotate(45deg) translate(5px, 5px);
   }
 
   &:nth-child(2) {
@@ -222,7 +325,7 @@
   }
 
   &:nth-child(3) {
-    transform: rotate(-45deg) translate(4px, -4px);
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
 
@@ -236,10 +339,13 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: color(surface);
-  border-top: 1px solid color(border);
-  box-shadow: $shadow-md;
+  background: $food-bg-pure-black;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: $z-index-dropdown;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 
   @include respond-to("md") {
     display: none !important;
@@ -247,11 +353,12 @@
 
   &.open {
     display: block;
+    max-height: 500px;
   }
 }
 
 .headerMobileNav {
-  padding: $spacing-4;
+  padding: 20px;
 }
 
 .headerMobileNavList {
@@ -260,7 +367,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: $spacing-2;
+  gap: 8px;
 }
 
 .headerMobileNavItem {
@@ -268,63 +375,45 @@
 }
 
 .headerMobileNavLink {
-  @include flexbox;
-  @include align-items(center);
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  color: color(text-secondary);
-  font-weight: $font-weight-medium;
-  font-size: $font-size-base;
-  padding: $spacing-3 $spacing-4;
-  border-radius: $border-radius-md;
-  transition: all $transition-base;
-  gap: $spacing-3;
+  color: $food-text-gray-light;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: color(primary);
-    background-color: $primary-50;
+    color: $food-text-light;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   &.active {
-    color: color(primary);
-    background-color: $primary-50;
+    color: #52c41a;
+    background: rgba(82, 196, 26, 0.1);
   }
 }
 
-.headerMobileNavIcon {
-  font-size: $font-size-xl;
-  line-height: 1;
-  min-width: 24px;
-  text-align: center;
-}
+.headerMobileContactLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: $food-text-light;
+  color: $food-bg-pure-black;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: 25px;
+  margin-top: 8px;
+  transition: all 0.3s ease;
 
-.headerMobileNavText {
-  font-size: $font-size-base;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-normal;
-}
-
-// =============================================================================
-// RESPONSIVE ADJUSTMENTS
-// =============================================================================
-
-@include respond-to("sm") {
-  .headerContainer {
-    padding-left: $spacing-4;
-    padding-right: $spacing-4;
-  }
-}
-
-@include respond-to("md") {
-  .headerContainer {
-    padding-left: $spacing-6;
-    padding-right: $spacing-6;
-  }
-}
-
-@include respond-to("lg") {
-  .headerContainer {
-    padding-left: $spacing-8;
-    padding-right: $spacing-8;
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -332,28 +421,34 @@
 // ACCESSIBILITY & FOCUS STATES
 // =============================================================================
 
-.headerNavLink:focus,
-.headerMobileNavLink:focus,
-.headerMobileToggle:focus {
-  @include focus-visible {
-    outline: 2px solid $primary-500;
-    outline-offset: 2px;
-  }
+.headerNavLink:focus-visible,
+.headerThemeToggle:focus-visible,
+.headerContactButton:focus-visible,
+.headerMobileToggle:focus-visible,
+.headerMobileNavLink:focus-visible {
+  outline: 2px solid $food-accent-coral;
+  outline-offset: 2px;
 }
 
 // =============================================================================
 // PRINT STYLES
 // =============================================================================
 
-@include print {
+@media print {
   .headerRoot {
     position: static;
     box-shadow: none;
     border-bottom: 1px solid $neutral-300;
+    background: white;
   }
 
   .headerMobileToggle,
-  .headerMobileMenu {
+  .headerMobileMenu,
+  .headerThemeToggle {
     display: none !important;
+  }
+
+  .headerNavLink {
+    color: black;
   }
 }

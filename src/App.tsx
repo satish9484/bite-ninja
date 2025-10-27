@@ -1,8 +1,8 @@
-import BecomeNinjaSection from "./components/BecomeNinjaSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import RecipeCollectionSection from "./components/RecipeCollectionSection";
 import RestaurantOwnerSection from "./components/RestaurantOwnerSection";
 import ServicesSection from "./components/ServicesSection";
 
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <HeroSection />
       <RestaurantOwnerSection />
-      <BecomeNinjaSection />
+      <RecipeCollectionSection />
       <ServicesSection />
       {/* <YCombinatorSection /> */}
       {/* <BrandsSection /> */}

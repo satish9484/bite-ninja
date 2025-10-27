@@ -99,6 +99,15 @@ $orange-700: #c2410c !default;
 $orange-800: #9a3412 !default;
 $orange-900: #7c2d12 !default;
 
+// Palette: Food/Restaurant Theme (for dark hero section)
+$food-bg-dark: #0a0a0a !default; // Near-black background
+$food-bg-pure-black: #000000 !default; // Pure black
+$food-accent-coral: #ff4c3b !default; // Chef's special coral/red
+$food-accent-orange: #df6025 !default; // Warm orange accent
+$food-text-light: #ffffff !default; // Pure white text
+$food-text-cream: #f5f5dc !default; // Cream/beige for subtle text
+$food-text-gray-light: #e0e0e0 !default; // Light gray for secondary text
+
 // Backward-compat palette aliases
 $white: $neutral-50 !default;
 $black: $neutral-900 !default;

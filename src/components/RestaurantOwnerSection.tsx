@@ -32,8 +32,8 @@ export default function RestaurantOwnerSection() {
           >
             <figure className={styles.ownerFigure}>
               <img
-                src="/Images/section_3.png"
-                alt="Restaurant success metrics"
+                src="/Images/dishPhoto/showCaseDish.png"
+                alt="Showcase dish"
               />
             </figure>
           </div>

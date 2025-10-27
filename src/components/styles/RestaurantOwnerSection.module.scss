@@ -1,6 +1,15 @@
+// =============================================================================
+// RESTAURANT OWNER SECTION - FOOD LANDING PAGE
+// Clean white background design
+// =============================================================================
+
+// Import global SCSS variables and mixins
+@use "../../scss/variable" as *;
+@use "../../scss/mixin" as *;
+
 .ownerRoot {
   padding: 80px 0;
-  background: linear-gradient(135deg, color(surface-2) 0%, color(surface) 100%);
+  background: color(surface); // White background from theme
   position: relative;
   overflow: hidden;
 
@@ -40,13 +49,9 @@
     .ownerHeading {
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      color: #1a1a1a;
+      color: color(text-primary); // Black text
       margin-bottom: 24px;
       line-height: 1.2;
-      background: linear-gradient(135deg, #2c3e50, #34495e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
 
       @media (max-width: 768px) {
         margin-bottom: 20px;
@@ -55,7 +60,7 @@
 
     .ownerDescription {
       font-size: clamp(1rem, 2.5vw, 1.125rem);
-      color: color(text-secondary);
+      color: color(text-secondary); // Gray text
       line-height: 1.7;
       margin-bottom: 36px;
       max-width: 500px;
@@ -70,8 +75,12 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: linear-gradient(135deg, $primary-600, $primary-500);
-      color: color(primary-contrast);
+      background: linear-gradient(
+        135deg,
+        $primary-600,
+        $primary-500
+      ); // Theme primary colors
+      color: $white; // White text from theme
       padding: 16px 32px;
       border: none;
       border-radius: 50px;
@@ -79,56 +88,28 @@
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       position: relative;
       overflow: hidden;
 
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.5s;
-      }
-
       &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
-        background: linear-gradient(135deg, #f7931e, #ff6b35);
-      }
-
-      &:hover::before {
-        left: 100%;
-      }
-
-      &:active {
-        transform: translateY(-1px);
+        background: linear-gradient(
+          135deg,
+          $primary-500,
+          $primary-400
+        ); // Lighter gradient on hover
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
       }
 
       figure {
         margin: 0;
         display: flex;
         align-items: center;
-        transition: transform 0.3s ease;
 
         img {
           width: 20px;
           height: 20px;
-          transition: transform 0.3s ease;
         }
-      }
-
-      &:hover figure img {
-        transform: translateX(3px);
       }
 
       @media (max-width: 480px) {
@@ -155,90 +136,34 @@
       min-height: 300px;
     }
 
-    .ownerLeftBox {
-      position: relative;
-      width: 347px;
-      height: 560px;
-      top: 0;
-      left: 0;
-      margin: 0;
-      z-index: 1;
-      transition: all 0.3s ease;
-      padding: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 25px;
-      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-
-      &:hover {
-        transform: scale(1.02);
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.25);
-      }
-
-      @media (max-width: 1024px) {
-        width: 400px;
-        height: 600px;
-        padding: 10px;
-        border-radius: 28px;
-      }
-
-      @media (max-width: 768px) {
-        width: 320px;
-        height: 480px;
-        padding: 8px;
-        border-radius: 25px;
-      }
-
-      @media (max-width: 480px) {
-        width: 250px;
-        height: 380px;
-        padding: 6px;
-        border-radius: 22px;
-      }
-    }
-
     .ownerFigure {
       width: 482px;
       height: 482px;
-      background: linear-gradient(135deg, $primary-600, $primary-500);
-      position: absolute;
+      position: relative;
       border-radius: 15px;
       margin: 0;
       z-index: 2;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-      transition: all 0.3s ease;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 15px;
-        transition: all 0.3s ease;
-      }
-
-      &:hover {
-        transform: translate(-50%, -50%) scale(1.05);
-        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
       }
 
       @media (max-width: 1024px) {
+        width: 380px;
+        height: 380px;
+      }
+
+      @media (max-width: 768px) {
         width: 320px;
         height: 320px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 480px) {
         width: 280px;
         height: 280px;
-      }
-
-      @media (max-width: 480px) {
-        width: 220px;
-        height: 220px;
       }
     }
   }
@@ -246,23 +171,23 @@
 
 // Responsive breakpoints for better mobile experience
 @media (max-width: 640px) {
-  .section3 {
+  .ownerRoot {
     padding: 60px 0;
 
-    .container {
+    .ownerContainer {
       padding: 0 16px;
     }
 
-    .rootSection2 {
+    .ownerGrid {
       gap: 30px;
     }
 
-    .section2Right {
-      .heading {
+    .ownerRight {
+      .ownerHeading {
         margin-bottom: 18px;
       }
 
-      .description {
+      .ownerDescription {
         margin-bottom: 24px;
         font-size: 1rem;
       }
@@ -271,19 +196,19 @@
 }
 
 @media (max-width: 480px) {
-  .section3 {
+  .ownerRoot {
     padding: 50px 0;
 
-    .rootSection2 {
+    .ownerGrid {
       gap: 25px;
     }
 
-    .section2Right {
-      .heading {
+    .ownerRight {
+      .ownerHeading {
         margin-bottom: 16px;
       }
 
-      .description {
+      .ownerDescription {
         margin-bottom: 20px;
         line-height: 1.6;
       }
